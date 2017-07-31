@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/TingoIDapp.iml" filepath="$PROJECT_DIR$/TingoIDapp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TingoID.iml" filepath="$PROJECT_DIR$/TingoID.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
