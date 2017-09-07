@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">TingoID</string>
+    <string name="title_activity_login">Iniciar Sesión</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Contraseña</string>
+    <string name="action_sign_in">Iniciar Sesión</string>
+    <string name="action_sign_in_short">Iniciar Sesión</string>
+    <string name="error_invalid_email">Email inválido</string>
+    <string name="error_invalid_password">Contraseña demasiado corta</string>
+    <string name="error_incorrect_password">Contraseña incorrecta</string>
+    <string name="error_field_required">Campo requerido</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <!-- Strings adicionales -->
+    <string name="error_server">Error en el servidor</string>
+    <string name="error_network">Error en la conexión</string>
+    <string name="error_different_password">Contraseñas no coinciden</string>
+
+
 </resources>

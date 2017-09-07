@@ -1,15 +1,9 @@
 package com.example.constanza.tingoidapp;
 
 import android.content.Intent;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-
-import com.google.zxing.Result;
-
-import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -17,12 +11,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+      /*
+        if (!SessionPrefs.get(this).isloggedIn()){
+            startActivity(new Intent(this,LoginActivity.class));
+            finish();
+            return;
+        }
+        */
+
         setContentView(R.layout.activity_main);
 
         findViewById(R.id.buttonScanner).setOnClickListener(this);
         findViewById(R.id.buttonGenerate).setOnClickListener(this);
-    }
 
+    }
     public void onClick(View view){
         switch (view.getId()){
             case R.id.buttonScanner:
