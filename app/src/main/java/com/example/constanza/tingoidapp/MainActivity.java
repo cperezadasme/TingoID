@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.graphics.Typeface;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-
+    Typeface face=Typeface.createFromAsset(getAssets(),"fonts/Druchilla.ttf");
+    //txtV.setTypeface(face);
    // private ZXingScannerView scannerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

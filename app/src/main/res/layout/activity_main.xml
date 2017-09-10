@@ -4,15 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.example.constanza.tingoidapp.MainActivity">
+    tools:context="com.example.constanza.tingoidapp.MainActivity"
+    android:weightSum="1"
+    android:baselineAligned="false"
+    android:orientation="vertical">
 
-    <Button
-        android:id="@+id/buttonScanner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="ScannerQR"
-        android:text="Escaner QR" />
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="170dp"
+        android:layout_height="172dp"
+        app:srcCompat="@mipmap/ic_launcher" />
 
     <Button
         android:id="@+id/buttonGenerate"
@@ -20,5 +21,36 @@
         android:layout_height="wrap_content"
         android:onClick="GenerateQR"
         android:text="Generar QR" />
+
+    <Button
+        android:id="@+id/buttonScanner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="ScannerQR"
+        android:text="Guardar Tinket" />
+
+    <Button
+        android:id="@+id/buttonPromociones"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Promociones" />
+
+    <Button
+        android:id="@+id/buttonDisponibles"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tinkets Disponibles" />
+
+    <Button
+        android:id="@+id/buttonHistorial"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tinkets Usados" />
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.design.widget.CoordinatorLayout>
 
 </LinearLayout>
