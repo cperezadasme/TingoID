@@ -1,4 +1,8 @@
-package com.example.constanza.tingoidapp;
+package com.example.constanza.tingoidapp.api;
+
+import com.example.constanza.tingoidapp.api.model.LoginBody;
+import com.example.constanza.tingoidapp.api.model.SignUpBody;
+import com.example.constanza.tingoidapp.api.model.User;
 
 import retrofit2.Call;
 import retrofit2.http.Body;

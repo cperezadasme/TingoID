@@ -1,4 +1,4 @@
-package com.example.constanza.tingoidapp;
+package com.example.constanza.tingoidapp.api.model;
 
 public class User {
     private String email;

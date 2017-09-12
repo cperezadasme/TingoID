@@ -16,6 +16,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.constanza.tingoidapp.api.model.ApiError;
+import com.example.constanza.tingoidapp.api.TingoApi;
+import com.example.constanza.tingoidapp.api.model.SignUpBody;
+import com.example.constanza.tingoidapp.api.model.User;
+import com.example.constanza.tingoidapp.prefs.SessionPrefs;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -181,8 +187,6 @@ public class SignUpActivity extends AppCompatActivity {
 
         }
     }
-
-
 
     private void showLoginError(String error) {
         Toast.makeText(this,error,Toast.LENGTH_LONG).show();

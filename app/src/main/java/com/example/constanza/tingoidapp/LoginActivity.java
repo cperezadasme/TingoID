@@ -2,7 +2,6 @@ package com.example.constanza.tingoidapp;
 
 import android.content.Context;
 import android.content.Intent;
-import android.media.Image;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.design.widget.TextInputLayout;
@@ -19,6 +18,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.constanza.tingoidapp.api.model.ApiError;
+import com.example.constanza.tingoidapp.api.TingoApi;
+import com.example.constanza.tingoidapp.api.model.LoginBody;
+import com.example.constanza.tingoidapp.api.model.User;
+import com.example.constanza.tingoidapp.prefs.SessionPrefs;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -170,7 +175,8 @@ public class LoginActivity extends AppCompatActivity {
                     //mostrar progreso
                     showProgress(false);
 
-                    //precesar errores
+                    //procesar errores
+
                     if (!response.isSuccessful()) {
                         String error;
                         if (response.errorBody()
@@ -179,7 +185,7 @@ public class LoginActivity extends AppCompatActivity {
                                 .equals("application/json")) {
                             ApiError apiError = ApiError.fromResponseBody(response.errorBody());
                             error = apiError.getMessage();
-                            Log.d("LoginActivity", apiError.getDeveloperMessage());
+                            //Log.d("LoginActivity",  error);
                         } else {
                             error = response.message();
                         }
@@ -188,9 +194,8 @@ public class LoginActivity extends AppCompatActivity {
                     }
 
                     SessionPrefs.get(LoginActivity.this).saveUser(response.body());
-
-
                     showMainScreen();
+
                 }
 
 

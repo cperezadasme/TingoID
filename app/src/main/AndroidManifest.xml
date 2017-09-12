@@ -33,7 +33,7 @@
         <activity android:name=".ScannerActivity" />
         <activity android:name=".GenerateActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".SignUpActivity"/>
+        <activity android:name=".SignUpActivity" />
     </application>
 
 </manifest>

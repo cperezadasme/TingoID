@@ -102,7 +102,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="27dp"
-        android:text="Tienes Cuenta? Login"
+        android:text="Tienes Cuenta? Inicia Sesión"
+
         android:layout_below="@+id/linearLayout"
         android:layout_centerHorizontal="true" />
 

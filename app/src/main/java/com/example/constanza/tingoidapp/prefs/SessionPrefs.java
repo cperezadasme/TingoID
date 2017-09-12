@@ -1,8 +1,10 @@
-package com.example.constanza.tingoidapp;
+package com.example.constanza.tingoidapp.prefs;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
+
+import com.example.constanza.tingoidapp.api.model.User;
 
 public class SessionPrefs {
 

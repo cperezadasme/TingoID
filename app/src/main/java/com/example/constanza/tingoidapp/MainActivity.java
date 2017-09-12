@@ -7,7 +7,7 @@ import android.view.View;
 import android.graphics.Typeface;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    Typeface face=Typeface.createFromAsset(getAssets(),"fonts/Druchilla.ttf");
+   // Typeface face =Typeface.createFromAsset(getAssets(),"fonts/Druchilla.ttf");
     //txtV.setTypeface(face);
    // private ZXingScannerView scannerView;
     @Override
@@ -20,11 +20,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return;
         }
         */
-
         setContentView(R.layout.activity_main);
 
         findViewById(R.id.buttonScanner).setOnClickListener(this);
-        findViewById(R.id.buttonGenerate).setOnClickListener(this);
+        //findViewById(R.id.buttonGenerate).setOnClickListener(this);
 
     }
     public void onClick(View view){
@@ -33,10 +32,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent intent = new Intent(MainActivity.this, ScannerActivity.class);
                 startActivity(intent);
                 break;
+            /*
             case R.id.buttonGenerate:
                 Intent intent1 = new Intent(MainActivity.this, GenerateActivity.class);
                 startActivity(intent1);
                 break;
+                */
         }
     }
 

@@ -1,4 +1,4 @@
-package com.example.constanza.tingoidapp;
+package com.example.constanza.tingoidapp.api.model;
 
 import com.google.gson.Gson;
 
