@@ -4,28 +4,27 @@ import com.google.gson.annotations.SerializedName;
 
 public class LoginBody {
     //atributo que sera interpretado
-    @SerializedName("email")
-    private String email;
-    private String password;
+    private String correo;
+    private String pass;
 
     public LoginBody(String email, String password) {
-        this.email = email;
-        this.password = password;
+        this.correo = email;
+        this.pass = password;
     }
 
     public String getEmail() {
-        return email;
+        return correo;
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.correo = email;
     }
 
     public String getPassword() {
-        return password;
+        return pass;
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.pass = password;
     }
 }

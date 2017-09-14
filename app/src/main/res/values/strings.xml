@@ -18,5 +18,6 @@
     <string name="error_server">Error en el servidor</string>
     <string name="error_network">Error en la conexión</string>
     <string name="error_different_password">Contraseñas no coinciden</string>
+    <string name="title_activity_user_profile">UserProfile</string>
 
 </resources>

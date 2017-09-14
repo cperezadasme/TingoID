@@ -53,4 +53,12 @@ public class SessionPrefs {
         editor.putString(PREFS_TOKEN,null);
         editor.apply();
     }
+
+    public static String getPrefsEmail() {
+        return PREFS_EMAIL;
+    }
+
+    public static String getPrefsName() {
+        return PREFS_NAME;
+    }
 }

@@ -4,38 +4,37 @@ package com.example.constanza.tingoidapp.api.model;
 import com.google.gson.annotations.SerializedName;
 
 public class SignUpBody {
-    @SerializedName("email")
-    private String email;
-    private String name;
-    private String password;
+    private String nombre;
+    private String correo;
+    private String pass;
 
-    public SignUpBody(String email, String name, String password) {
-        this.email = email;
-        this.name = name;
-        this.password = password;
+    public SignUpBody(String nombre, String correo, String pass) {
+        this.nombre = nombre;
+        this.correo = correo;
+        this.pass = pass;
     }
 
-    public String getEmail() {
-        return email;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public String getName() {
-        return name;
+    public String getCorreo() {
+        return correo;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPass() {
+        return pass;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPass(String pass) {
+        this.pass = pass;
     }
 }

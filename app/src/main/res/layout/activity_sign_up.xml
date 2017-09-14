@@ -12,8 +12,8 @@
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="1500dp"
+        android:layout_height="150dp"
         app:srcCompat="@drawable/logo_tingo"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
@@ -78,6 +78,8 @@
             android:id="@+id/float_confirm_password">
             <EditText
                 android:id="@+id/confirm_password"
+                android:imeActionId="@+id/sign_up_action"
+                android:imeActionLabel="Registrarse"
                 android:inputType="textPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

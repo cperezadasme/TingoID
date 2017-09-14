@@ -9,7 +9,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -72,6 +74,20 @@ public class SignUpActivity extends AppCompatActivity {
         mlinkLogin = (TextView)findViewById(R.id.login);
         Button mSignUpButton = (Button)findViewById(R.id.button_confirm_sign_up);
 
+        mConfirmPass.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
+                if (id == R.id.sign_up_action || id == EditorInfo.IME_NULL) {
+                    if (!isOnline()) {
+                        showLoginError(getString(R.string.error_network));
+                        return false;
+                    }
+                    attemptSignUp();
+                    return true;
+                }
+                return false;
+            }
+        });
         mSignUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,7 +104,7 @@ public class SignUpActivity extends AppCompatActivity {
         mlinkLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showLogincreen();
+                showLoginScreen();
             }
         });
     }
@@ -147,7 +163,7 @@ public class SignUpActivity extends AppCompatActivity {
             //showProgress(true);
 
             //hasta aqui corregido
-            Call<User> signupCall = mTingoApi.signup(new SignUpBody(email,name, password));
+            Call<User> signupCall = mTingoApi.signup(new SignUpBody(name,email, password));
             signupCall.enqueue(new Callback<User>() {
                 @Override
                 public void onResponse(Call<User> call, Response<User> response) {
@@ -173,9 +189,9 @@ public class SignUpActivity extends AppCompatActivity {
 
                     SessionPrefs.get(SignUpActivity.this).saveUser(response.body());
 
-                    showMainScreen();
+                    Toast.makeText(getApplicationContext(),"Te has registrado exitosamente", Toast.LENGTH_LONG).show();
+                    showLoginScreen();
                 }
-
 
                 @Override
                 public void onFailure(Call<User> call, Throwable t) {
@@ -192,14 +208,13 @@ public class SignUpActivity extends AppCompatActivity {
         Toast.makeText(this,error,Toast.LENGTH_LONG).show();
     }
 
-    private void showLogincreen(){
+    private void showLoginScreen(){
         startActivity(new Intent(this, LoginActivity.class));
         finish();
     }
 
     private void showMainScreen() {
         startActivity(new Intent(this, MainActivity.class));
-        finish();
     }
 
     private boolean isPasswordValid(String password, String confirmPass) {

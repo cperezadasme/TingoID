@@ -50,6 +50,10 @@ public class LoginActivity extends AppCompatActivity {
     private TextInputLayout mFloatLabelPassword;
 
 
+    private String name;
+    private String userEmail;
+    private int avatar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -131,7 +135,7 @@ public class LoginActivity extends AppCompatActivity {
         mFloatLabelPassword.setError(null);
 
         // Store values at the time of the login attempt.
-        String email = mEmailView.getText().toString();
+        final String email = mEmailView.getText().toString();
         String password = mPasswordView.getText().toString();
 
         boolean cancel = false;
@@ -235,13 +239,14 @@ public class LoginActivity extends AppCompatActivity {
 
     //DONDE SE DIRIGE AL USUARIO UNA VEZ QUE INICIA SESION
     private void showMainScreen() {
-        startActivity(new Intent(this, MainActivity.class));
-        finish();
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        //intent.putExtra("userEmail", email);
+
+        startActivity(intent);
     }
 
     private void showSignUpScreen(){
         startActivity(new Intent(this, SignUpActivity.class));
-        finish();
     }
 
     //Verificar conexion
