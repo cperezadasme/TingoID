@@ -1,3 +1,4 @@
+/*
 package com.example.constanza.tingoidapp;
 
 import android.graphics.Bitmap;
@@ -84,3 +85,4 @@ public class GenerateActivity extends AppCompatActivity {
     }
 }
 
+*/

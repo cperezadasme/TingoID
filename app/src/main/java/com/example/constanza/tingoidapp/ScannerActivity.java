@@ -1,15 +1,10 @@
 package com.example.constanza.tingoidapp;
 
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.SurfaceView;
 import android.view.View;
-import android.widget.TextView;
 
-import com.google.android.gms.vision.CameraSource;
-import com.google.android.gms.vision.barcode.Barcode;
-import com.google.android.gms.vision.barcode.BarcodeDetector;
 import com.google.zxing.Result;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;

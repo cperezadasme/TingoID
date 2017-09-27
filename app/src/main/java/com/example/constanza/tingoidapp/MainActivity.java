@@ -1,33 +1,21 @@
 package com.example.constanza.tingoidapp;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.graphics.Typeface;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.constanza.tingoidapp.api.TingoApi;
-import com.example.constanza.tingoidapp.api.model.ApiError;
-import com.example.constanza.tingoidapp.api.model.User;
-import com.example.constanza.tingoidapp.api.model.qrBody;
-import com.example.constanza.tingoidapp.prefs.SessionPrefs;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+
+//import com.example.constanza.tingoidapp.api.model.qrBody;
 
 public class MainActivity extends AppCompatActivity {
    // Typeface face =Typeface.createFromAsset(getAssets(),"fonts/Druchilla.ttf");
