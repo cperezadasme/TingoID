@@ -15,7 +15,7 @@ donde @POST es el método, lo que esta en dentro del paréntesis esa la ruta dec
 Dentro de este archivo se debe agregar todo eso que se implementa en la api
 
 
-## Activity y Layaout
+## Activity y Layout
 Las Activities son todas la pantallas que aparecen en la app y se conectan entre ellas atraves de los botones y los startActivity()
 Cada Activity tiene asociado un layaout que es lo visible, en la activity va la lógica. En cada layout cada cosa tiene un id que es lo que se llama en la activity asi que si se modifica algun nombre o algo se debe cambiar también en la activity y para eso hay que ocupar el Rename asi se cambian todas y se evitan errores.
 
