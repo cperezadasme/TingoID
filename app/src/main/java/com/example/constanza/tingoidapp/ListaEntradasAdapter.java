@@ -8,13 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
-
 import com.example.constanza.tingoidapp.api.model.Tinket;
-
 import java.util.ArrayList;
-import java.util.List;
 
 public class ListaEntradasAdapter extends ArrayAdapter{
 

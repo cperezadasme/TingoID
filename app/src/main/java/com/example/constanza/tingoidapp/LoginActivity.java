@@ -218,7 +218,7 @@ public class LoginActivity extends AppCompatActivity {
                         else {
                             Toast.makeText(LoginActivity.this,"Cuenta incorrecta",Toast.LENGTH_LONG).show();
 
-                            showMainScreen(); //borrar una vez que funcione
+                            //showMainScreen(); //borrar una vez que funcione
                             //return;
                         }
                     } catch (JSONException e) {

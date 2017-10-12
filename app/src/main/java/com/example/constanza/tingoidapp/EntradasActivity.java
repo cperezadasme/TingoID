@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.constanza.tingoidapp.api.TingoApi;
 import com.example.constanza.tingoidapp.api.model.EntradasBody;
@@ -20,7 +21,6 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -53,7 +53,7 @@ public class EntradasActivity extends AppCompatActivity {
 
         String usuario = getIntent().getStringExtra("usuario");
 
-        Call <ResponseBody> entradasCall = mTingoApi.entradasDisponibles(new EntradasBody("kappa"));
+        Call <ResponseBody> entradasCall = mTingoApi.entradasDisponibles(new EntradasBody(usuario));
         entradasCall.enqueue(new Callback<ResponseBody>() {
             String json;
 
@@ -81,26 +81,31 @@ public class EntradasActivity extends AppCompatActivity {
                             lista_tinkets.add(tinket);
                         }
 
-                        listView = (ListView)findViewById(R.id.lista_entradas_disponibles);
-                        adapter = new ListaEntradasAdapter(getApplicationContext(),R.layout.item_entrada_disponible,lista_tinkets);
-                        listView.setAdapter(adapter);
+                        if (lista_tinkets.size()>0){
+                            listView = (ListView)findViewById(R.id.lista_entradas_disponibles);
+                            adapter = new ListaEntradasAdapter(getApplicationContext(),R.layout.item_entrada_disponible,lista_tinkets);
+                            listView.setAdapter(adapter);
 
-                        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                            @Override
-                            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                                Tinket tinket_seleccionado = (Tinket) adapter.getItem(position);
-                                Intent intent = new Intent(EntradasActivity.this,DetalleActivity.class);
-                                intent.putExtra("id_tinket", tinket_seleccionado.getId());
-                                startActivity(intent);
-                            }
-                        });
+                            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                                    Tinket tinket_seleccionado = (Tinket) adapter.getItem(position);
+                                    Intent intent = new Intent(EntradasActivity.this,DetalleActivity.class);
+                                    intent.putExtra("id_tinket", tinket_seleccionado.getId());
+                                    startActivity(intent);
+                                }
+                            });
+                        }
 
+                        else {
+                            TextView disponibles = (TextView) findViewById(R.id.entradas_disponibles);
+                            disponibles.setText("No tienes entradas disponibles");
+
+                        }
                     }
                 }
 
-                catch (IOException e) {
-                    e.printStackTrace();
-                } catch (JSONException e) {
+                catch (IOException | JSONException e) {
                     e.printStackTrace();
                 }
             }
