@@ -31,15 +31,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 //import com.example.constanza.tingoidapp.api.model.qrBody;
 
 public class MainActivity extends AppCompatActivity {
-   // Typeface face =Typeface.createFromAsset(getAssets(),"fonts/Druchilla.ttf");
-    //txtV.setTypeface(face);
-   // private ZXingScannerView scannerView;
-    //private String user_email;
-    //private String user_name;
 
     private TingoApi mTingoApi;
     private Retrofit mRestAdapter;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,11 +78,6 @@ public class MainActivity extends AppCompatActivity {
                 integrator.setBeepEnabled(false);
                 integrator.setBarcodeImageEnabled(false);
                 integrator.initiateScan();
-                /*
-                Intent intent = new Intent(MainActivity.this,ScannerActivity.class);
-                startActivity(intent);
-                finish();
-                */
             }
         });
 
@@ -115,20 +104,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
-
-      /*
-        if (!SessionPrefs.get(this).isloggedIn()){
-            startActivity(new Intent(this,LoginActivity.class));
-            finish();
-            return;
-        }
-        */
-
-
-        //findViewById(R.id.buttonScanner).setOnClickListener(this);
-        //findViewById(R.id.buttonGenerate).setOnClickListener(this);
-
     }
 
     @Override
@@ -140,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "Has cancelado el scaner",Toast.LENGTH_LONG).show();
             }
             else {
-                Toast.makeText(this,intentResult.getContents(),Toast.LENGTH_LONG).show();
+                //Toast.makeText(this,intentResult.getContents(),Toast.LENGTH_LONG).show();
                 //intentResult.getContents(): indica el contenido de los escaneado
                 //CONEXION A LA API
                 String [] result = intentResult.getContents().split(" ");
@@ -199,31 +174,4 @@ public class MainActivity extends AppCompatActivity {
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
         return activeNetwork != null && activeNetwork.isConnected();
     }
-
-
-    /* SCANNER
-
-    public void ScannerQR(View view){
-        scannerView = new ZXingScannerView(this);
-        setContentView(scannerView);
-        scannerView.setResultHandler(this);
-        scannerView.startCamera();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        scannerView.stopCamera();
-    }
-
-    @Override
-    public void handleResult(Result result) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Resultado del escaner");
-        builder.setMessage(result.getText());
-        AlertDialog alertDialog = builder.create();
-        alertDialog.show();
-        scannerView.resumeCameraPreview(this);
-    }
-    */
 }

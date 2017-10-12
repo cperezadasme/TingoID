@@ -1,9 +1,13 @@
 package com.example.constanza.tingoidapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.constanza.tingoidapp.api.TingoApi;
 import com.example.constanza.tingoidapp.api.model.EntradasBody;
@@ -75,21 +79,26 @@ public class HistorialActivity extends AppCompatActivity {
                             lista_tinkets.add(tinket);
                         }
 
-                        listView = (ListView)findViewById(R.id.lista_entradas_utilizadas);
-                        adapter = new ListaEntradasAdapter(getApplicationContext(),R.layout.item_entrada_utilizada,lista_tinkets);
-                        listView.setAdapter(adapter);
+                        if (lista_tinkets.size()>0){
+                            listView = (ListView)findViewById(R.id.lista_entradas_utilizadas);
+                            adapter = new UtilizadasAdapter(getApplicationContext(),R.layout.item_entrada_utilizada,lista_tinkets);
+                            listView.setAdapter(adapter);
 
-                        /* al hacer click en la lista
-                        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                            @Override
-                            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                                Tinket tinket_seleccionado = (Tinket) adapter.getItem(position);
-                                Intent intent = new Intent(HistorialActivity.this,DetalleActivity.class);
-                                intent.putExtra("id_tinket", tinket_seleccionado.getId());
-                                startActivity(intent);
-                            }
-                        });
-                        */
+                            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                                    Tinket tinket_seleccionado = (Tinket) adapter.getItem(position);
+                                    Intent intent = new Intent(HistorialActivity.this,DetalleActivity.class);
+                                    intent.putExtra("id_tinket", tinket_seleccionado.getId());
+                                    startActivity(intent);
+                                }
+                            });
+                        }
+
+                        else {
+                            TextView usadas = (TextView)findViewById(R.id.entradas_utilizadas);
+                            usadas.setText("No tienes entradas utilizadas");
+                        }
 
                     }
                 }

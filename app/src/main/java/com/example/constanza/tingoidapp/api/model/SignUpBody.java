@@ -5,13 +5,23 @@ import com.google.gson.annotations.SerializedName;
 
 public class SignUpBody {
     private String nombre;
+    private String apellido;
     private String correo;
     private String pass;
 
-    public SignUpBody(String nombre, String correo, String pass) {
+    public SignUpBody(String nombre, String apellido,String correo, String pass) {
         this.nombre = nombre;
+        this.apellido = apellido;
         this.correo = correo;
         this.pass = pass;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public String getNombre() {

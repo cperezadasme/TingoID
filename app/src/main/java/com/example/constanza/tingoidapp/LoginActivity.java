@@ -212,11 +212,13 @@ public class LoginActivity extends AppCompatActivity {
                         JSONObject response_json = new JSONObject(json);
                         String logged = response_json.getString("logged");
                         if (logged.equals("true")){
-                            Toast.makeText(LoginActivity.this,"has ingresado",Toast.LENGTH_LONG).show();
+                            //Toast.makeText(LoginActivity.this,"has ingresado",Toast.LENGTH_LONG).show();
                             showMainScreen();
+
                         }
                         else {
                             Toast.makeText(LoginActivity.this,"Cuenta incorrecta",Toast.LENGTH_LONG).show();
+
 
                             //showMainScreen(); //borrar una vez que funcione
                             //return;
@@ -294,6 +296,8 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         intent.putExtra("usuario", email);
         startActivity(intent);
+        mEmailView.setText(null);
+        mPasswordView.setText(null);
     }
 
     private void showSignUpScreen(){

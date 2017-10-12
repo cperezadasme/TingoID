@@ -56,7 +56,7 @@ public class DetalleActivity extends AppCompatActivity {
                         if (detalle.equals("true")){
                             //String id = response_json.getString("id");
                             String fecha_emision = response_json.getString("fecha_emision");
-                            //String fecha_utilizacion = response_json.getString("fecha_utilizacion");
+                            String fecha_utilizacion = response_json.getString("fecha_utilizacion");
                             String fecha_expiracion = response_json.getString("fecha_expiracion");
                             //String valido = response_json.getString("valido");
                             String empresa = response_json.getString("empresa");
@@ -64,33 +64,42 @@ public class DetalleActivity extends AppCompatActivity {
                             String valor = response_json.getString("valor");
 
                             TextView textView_emision = (TextView) findViewById(R.id.detalle_emision);
+                            TextView textView_utilizacion = (TextView) findViewById(R.id.detalle_utilizacion);
                             TextView textView_empresa = (TextView) findViewById(R.id.detalle_empresa);
                             TextView textView_expiracion = (TextView) findViewById(R.id.detalle_expiracion);
                             TextView textView_tipo = (TextView) findViewById(R.id.detalle_tipo);
                             TextView textView_valor = (TextView) findViewById(R.id.detalle_valor);
 
+                            /*
                             //prueba
                             textView_emision.setText("2017-10-10");
                             textView_empresa.setText("Casino");
                             textView_expiracion.setText("2017-12-12");
                             textView_tipo.setText("Almuerzo");
                             textView_valor.setText("3.0000");
-                            /*
+                            */
                             textView_emision.setText(fecha_emision);
                             textView_empresa.setText(empresa);
                             textView_expiracion.setText(fecha_expiracion);
                             textView_tipo.setText(tipo);
                             textView_valor.setText(valor);
-                            */
+
+                            if (fecha_utilizacion.equals("2050-12-12")){
+                                textView_utilizacion.setText("Disponible");
+                            }
+
+                            else {
+                                textView_utilizacion.setText(fecha_utilizacion);
+                            }
+
                         }
 
 
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    } catch (JSONException e) {
+                    } catch (IOException | JSONException e) {
                         e.printStackTrace();
                     }
                 }
+                /*
                 TextView textView_emision = (TextView) findViewById(R.id.detalle_emision);
                 TextView textView_empresa = (TextView) findViewById(R.id.detalle_empresa);
                 TextView textView_expiracion = (TextView) findViewById(R.id.detalle_expiracion);
@@ -103,6 +112,7 @@ public class DetalleActivity extends AppCompatActivity {
                 textView_expiracion.setText("2017-12-12");
                 textView_tipo.setText("Almuerzo");
                 textView_valor.setText("3.0000");
+                */
             }
 
             @Override

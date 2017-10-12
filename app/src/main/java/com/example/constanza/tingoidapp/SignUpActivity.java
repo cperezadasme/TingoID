@@ -50,11 +50,13 @@ public class SignUpActivity extends AppCompatActivity {
     private EditText mPassword;
     private EditText mConfirmPass;
     private EditText mName;
+    private EditText mApellido;
 
     private TextInputLayout mFloatEmail;
     private TextInputLayout mFloatName;
     private TextInputLayout mFloatPassword;
     private TextInputLayout mFloatConfirmPass;
+    private TextInputLayout mFloatApellido;
 
     private String csrf_token;
 
@@ -76,6 +78,7 @@ public class SignUpActivity extends AppCompatActivity {
         mFloatName = (TextInputLayout)findViewById(R.id.float_name);
         mFloatPassword = (TextInputLayout)findViewById(R.id.float_password);
         mFloatConfirmPass = (TextInputLayout)findViewById(R.id.float_confirm_password);
+        mFloatApellido = (TextInputLayout)findViewById(R.id.float_apellido);
 
         mLogo = (ImageView)findViewById(R.id.logo);
         mEmail = (EditText)findViewById(R.id.email_sign_up);
@@ -83,7 +86,9 @@ public class SignUpActivity extends AppCompatActivity {
         mPassword = (EditText)findViewById(R.id.password_sign_up);
         mConfirmPass = (EditText)findViewById(R.id.confirm_password);
         mlinkLogin = (TextView)findViewById(R.id.login);
+        mApellido = (EditText) findViewById(R.id.apellido);
         Button mSignUpButton = (Button)findViewById(R.id.button_confirm_sign_up);
+
 
         mConfirmPass.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -126,12 +131,14 @@ public class SignUpActivity extends AppCompatActivity {
         mFloatName.setError(null);
         mFloatPassword.setError(null);
         mFloatConfirmPass.setError(null);
+        mFloatApellido.setError(null);
 
         //Store values
         String email = mEmail.getText().toString();
         final String name = mName.getText().toString();
         String password = mPassword.getText().toString();
         String confirmPass = mConfirmPass.getText().toString();
+        String apellido = mApellido.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
@@ -161,6 +168,12 @@ public class SignUpActivity extends AppCompatActivity {
         if (TextUtils.isEmpty(name)) {
             mFloatName.setError(getString(R.string.error_field_required));
             focusView = mFloatName;
+            cancel = true;
+        }
+
+        if (TextUtils.isEmpty(apellido)) {
+            mFloatApellido.setError(getString(R.string.error_field_required));
+            focusView = mFloatApellido;
             cancel = true;
         }
 
@@ -203,7 +216,7 @@ public class SignUpActivity extends AppCompatActivity {
                 }
             });
 
-            Call<ResponseBody> signupCall = mTingoApi.signup(csrf_token, new SignUpBody(name,email, password));
+            Call<ResponseBody> signupCall = mTingoApi.signup(csrf_token, new SignUpBody(name,apellido,email, password));
             signupCall.enqueue(new Callback<ResponseBody>() {
                 @Override
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
