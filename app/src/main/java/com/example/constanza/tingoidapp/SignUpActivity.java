@@ -20,15 +20,24 @@ import android.widget.Toast;
 
 import com.example.constanza.tingoidapp.api.model.ApiError;
 import com.example.constanza.tingoidapp.api.TingoApi;
+import com.example.constanza.tingoidapp.api.model.Handshaking;
 import com.example.constanza.tingoidapp.api.model.SignUpBody;
 import com.example.constanza.tingoidapp.api.model.User;
 import com.example.constanza.tingoidapp.prefs.SessionPrefs;
+import com.google.gson.JsonObject;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -46,6 +55,8 @@ public class SignUpActivity extends AppCompatActivity {
     private TextInputLayout mFloatName;
     private TextInputLayout mFloatPassword;
     private TextInputLayout mFloatConfirmPass;
+
+    private String csrf_token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,7 +129,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         //Store values
         String email = mEmail.getText().toString();
-        String name = mName.getText().toString();
+        final String name = mName.getText().toString();
         String password = mPassword.getText().toString();
         String confirmPass = mConfirmPass.getText().toString();
 
@@ -163,14 +174,65 @@ public class SignUpActivity extends AppCompatActivity {
             //showProgress(true);
 
             //hasta aqui corregido
-            Call<User> signupCall = mTingoApi.signup(new SignUpBody(name,email, password));
-            signupCall.enqueue(new Callback<User>() {
+            //csrf_token = getIntent().getStringExtra("csrf_token");
+
+            //handshaking
+            Call <ResponseBody> handshakingCall = mTingoApi.handshaking();
+            handshakingCall.enqueue(new Callback<ResponseBody>() {
                 @Override
-                public void onResponse(Call<User> call, Response<User> response) {
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    if (response.isSuccessful()){
+                        String json = null;
+                        try {
+                            json = response.body().string();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        try {
+                            JSONObject response_json = new JSONObject(json);
+                            csrf_token = response_json.getString("csrf_token");
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    showLoginError(t.getMessage());
+                }
+            });
+
+            Call<ResponseBody> signupCall = mTingoApi.signup(csrf_token, new SignUpBody(name,email, password));
+            signupCall.enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    try {
+                        if (response.isSuccessful()){
+                            String json = null;
+                            try {
+                                json = response.body().string();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            JSONObject response_json = new JSONObject(json);
+                            String usuario_almacenado = response_json.getString("almacenado");
+                            if (usuario_almacenado.equals("true")){
+                                Toast.makeText(getApplicationContext(), (String) response_json.get("mensaje"), Toast.LENGTH_LONG).show();
+                                showLoginScreen();
+                            }
+                            else {
+                                Toast.makeText(getApplicationContext(), (String) response_json.get("mensaje"), Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
                     //mostrar progreso
                     //showProgress(false);
-
                     //precesar errores
+                    /*
                     if (!response.isSuccessful()) {
                         String error;
                         if (response.errorBody()
@@ -187,14 +249,21 @@ public class SignUpActivity extends AppCompatActivity {
                         return;
                     }
 
-                    SessionPrefs.get(SignUpActivity.this).saveUser(response.body());
+                    //SessionPrefs.get(SignUpActivity.this).saveUser(response.body());
 
-                    Toast.makeText(getApplicationContext(),"Te has registrado exitosamente", Toast.LENGTH_LONG).show();
-                    showLoginScreen();
+                    try {
+                        JSONObject response_json = new JSONObject(response.body().toString());
+                        Toast.makeText(getApplicationContext(), (String) response_json.get("mensaje"), Toast.LENGTH_LONG).show();
+                        showLoginScreen();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    */
+
                 }
 
                 @Override
-                public void onFailure(Call<User> call, Throwable t) {
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
                     //showProgress(false);
                     showLoginError(t.getMessage());
                 }
@@ -210,7 +279,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void showLoginScreen(){
         startActivity(new Intent(this, LoginActivity.class));
-        finish();
+        //finish();
     }
 
     private void showMainScreen() {

@@ -1,6 +1,9 @@
 package com.example.constanza.tingoidapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -9,9 +12,19 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.constanza.tingoidapp.api.TingoApi;
+import com.example.constanza.tingoidapp.api.model.TinketBody;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -21,8 +34,8 @@ public class MainActivity extends AppCompatActivity {
    // Typeface face =Typeface.createFromAsset(getAssets(),"fonts/Druchilla.ttf");
     //txtV.setTypeface(face);
    // private ZXingScannerView scannerView;
-    private String user_email;
-    private String user_name;
+    //private String user_email;
+    //private String user_name;
 
     private TingoApi mTingoApi;
     private Retrofit mRestAdapter;
@@ -42,7 +55,12 @@ public class MainActivity extends AppCompatActivity {
         mTingoApi = mRestAdapter.create(TingoApi.class);
 
         ImageView mImage = (ImageView) findViewById(R.id.buttonAvatar);
-        Button mTinket = (Button) findViewById(R.id.buttonScanner);
+        Button mScanner = (Button) findViewById(R.id.buttonScanner);
+        Button mTinketsDisponibles = (Button) findViewById(R.id.buttonDisponibles);
+        Button mTinketsUtilizados = (Button) findViewById(R.id.buttonHistorial);
+
+        //obtengo usuario con el que inicia sesión
+        String usuario = getIntent().getStringExtra("usuario");
 /*
         mImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 */
-        mTinket.setOnClickListener(new View.OnClickListener() {
+        mScanner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 IntentIntegrator integrator = new IntentIntegrator(MainActivity.this);
@@ -74,6 +92,31 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        mTinketsDisponibles.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (isOnline()){
+                    String usuario = getIntent().getStringExtra("usuario");
+                    Intent intent = new Intent(MainActivity.this, EntradasActivity.class);
+                    intent.putExtra("usuario",usuario);
+                    startActivity(intent);
+                }
+            }
+        });
+
+        mTinketsUtilizados.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (isOnline()){
+                    String usuario = getIntent().getStringExtra("usuario");
+                    Intent intent = new Intent(MainActivity.this, HistorialActivity.class);
+                    intent.putExtra("usuario",usuario);
+                    startActivity(intent);
+                }
+            }
+        });
+
+
       /*
         if (!SessionPrefs.get(this).isloggedIn()){
             startActivity(new Intent(this,LoginActivity.class));
@@ -90,6 +133,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        String usuario = getIntent().getStringExtra("usuario");
         IntentResult intentResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if (intentResult != null){
             if(intentResult.getContents()==null){
@@ -98,43 +142,44 @@ public class MainActivity extends AppCompatActivity {
             else {
                 Toast.makeText(this,intentResult.getContents(),Toast.LENGTH_LONG).show();
                 //intentResult.getContents(): indica el contenido de los escaneado
-                /* CONEXION A LA API
+                //CONEXION A LA API
                 String [] result = intentResult.getContents().split(" ");
                 String empresa, id;
                 empresa = result[0];
                 id = result[1];
-                Call<User> requestCall = mTingoApi.requestQR(new qrBody(empresa,id));
-                requestCall.enqueue(new Callback<User>() {
+
+                Call<ResponseBody> almacenarTinket = mTingoApi.almacenarTinket(new TinketBody(id,empresa,usuario));
+                almacenarTinket.enqueue(new Callback<ResponseBody>() {
                     @Override
-                    public void onResponse(Call<User> call, Response<User> response) {
-
-                        if (!response.isSuccessful()) {
-                            String error;
-                            if (response.errorBody()
-                                    .contentType()
-                                    .subtype()
-                                    .equals("application/json")) {
-                                ApiError apiError = ApiError.fromResponseBody(response.errorBody());
-                                error = apiError.getMessage();
-                                //Log.d("LoginActivity",  error);
-                            } else {
-                                error = response.message();
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        try {
+                            if (response.isSuccessful()){
+                                String json = null;
+                                try {
+                                    json = response.body().string();
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                                JSONObject response_json = new JSONObject(json);
+                                String almacenar = response_json.getString("almacenar");
+                                if (almacenar.equals("True")){
+                                    Toast.makeText(getApplicationContext(), (String) response_json.get("mensaje"), Toast.LENGTH_LONG).show();
+                                }
+                                else {
+                                    Toast.makeText(getApplicationContext(), (String) response_json.get("mensaje"), Toast.LENGTH_LONG).show();
+                                }
                             }
-                            showLoginError(error);
-                            return;
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
-                        else{
-                            Toast.makeText(this,"Tu tinket ha sido guardada exitosamente", Toast.LENGTH_SHORT).show();
-                        }
-
                     }
 
                     @Override
-                    public void onFailure(Call<User> call, Throwable t) {
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
                         showLoginError(t.getMessage());
                     }
                 });
-                */
+
             }
         }
         else{
@@ -145,6 +190,14 @@ public class MainActivity extends AppCompatActivity {
     //Mostrar mensaje de error
     private void showLoginError(String error) {
         Toast.makeText(this,error,Toast.LENGTH_LONG).show();
+    }
+
+    private boolean isOnline(){
+        ConnectivityManager cm =
+                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        return activeNetwork != null && activeNetwork.isConnected();
     }
 
 

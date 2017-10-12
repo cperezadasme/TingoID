@@ -21,16 +21,22 @@ import android.widget.Toast;
 
 import com.example.constanza.tingoidapp.api.model.ApiError;
 import com.example.constanza.tingoidapp.api.TingoApi;
+import com.example.constanza.tingoidapp.api.model.Handshaking;
 import com.example.constanza.tingoidapp.api.model.LoginBody;
 import com.example.constanza.tingoidapp.api.model.User;
 import com.example.constanza.tingoidapp.prefs.SessionPrefs;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -50,9 +56,11 @@ public class LoginActivity extends AppCompatActivity {
     private TextInputLayout mFloatLabelPassword;
 
 
-    private String name;
-    private String userEmail;
-    private int avatar;
+    private String email; //nombre del usuario (correo)
+
+    //private String userEmail;
+    //private int avatar;
+    private String csrf_token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +75,7 @@ public class LoginActivity extends AppCompatActivity {
 
         //conexion a la api
         mTingoApi = mRestAdapter.create(TingoApi.class);
+
 
         // Set up the login form.
         mEmailView = (EditText) findViewById(R.id.email);
@@ -135,7 +144,7 @@ public class LoginActivity extends AppCompatActivity {
         mFloatLabelPassword.setError(null);
 
         // Store values at the time of the login attempt.
-        final String email = mEmailView.getText().toString();
+        email = mEmailView.getText().toString();
         String password = mPasswordView.getText().toString();
 
         boolean cancel = false;
@@ -171,11 +180,52 @@ public class LoginActivity extends AppCompatActivity {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
-
-            Call<User> loginCall = mTingoApi.login(new LoginBody(email,password));
-            loginCall.enqueue(new Callback<User>() {
+/*
+            //handshaking
+            Call <Handshaking> handshakingCall = mTingoApi.handshaking();
+            handshakingCall.enqueue(new Callback<Handshaking>() {
                 @Override
-                public void onResponse(Call<User> call, Response<User> response) {
+                public void onResponse(Call<Handshaking> call, Response<Handshaking> response) {
+                    if (response.isSuccessful()){
+                        csrf_token = response.body().getCsrf_token();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Handshaking> call, Throwable t) {
+                    showLoginError(t.getMessage());
+                }
+            });
+*/
+            Call<ResponseBody> loginCall = mTingoApi.login(csrf_token, new LoginBody(email,password));
+            loginCall.enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    String json = null;
+                    showProgress(false);
+                    try {
+                        try {
+                            json = response.body().string();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        JSONObject response_json = new JSONObject(json);
+                        String logged = response_json.getString("logged");
+                        if (logged.equals("true")){
+                            Toast.makeText(LoginActivity.this,"has ingresado",Toast.LENGTH_LONG).show();
+                            showMainScreen();
+                        }
+                        else {
+                            Toast.makeText(LoginActivity.this,"Cuenta incorrecta",Toast.LENGTH_LONG).show();
+
+                            showMainScreen(); //borrar una vez que funcione
+                            //return;
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                    /*
                     //mostrar progreso
                     showProgress(false);
 
@@ -198,13 +248,15 @@ public class LoginActivity extends AppCompatActivity {
                     }
 
                     SessionPrefs.get(LoginActivity.this).saveUser(response.body());
+
                     showMainScreen();
+                    */
 
                 }
 
 
                 @Override
-                public void onFailure(Call<User> call, Throwable t) {
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
                     showProgress(false);
                     showLoginError(t.getMessage());
                 }
@@ -240,13 +292,15 @@ public class LoginActivity extends AppCompatActivity {
     //DONDE SE DIRIGE AL USUARIO UNA VEZ QUE INICIA SESION
     private void showMainScreen() {
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-        //intent.putExtra("userEmail", email);
-
+        intent.putExtra("usuario", email);
         startActivity(intent);
     }
 
     private void showSignUpScreen(){
-        startActivity(new Intent(this, SignUpActivity.class));
+        Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
+        intent.putExtra("csrf_token", csrf_token);
+        startActivity(intent);
+
     }
 
     //Verificar conexion

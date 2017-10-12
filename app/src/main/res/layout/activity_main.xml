@@ -35,6 +35,13 @@
         android:onClick="ScannerQR"
         -->
 
+    <Button
+        android:id="@+id/buttonDisponibles"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:text="Tinkets Disponibles" />
 
     <!--
     <Button
@@ -43,18 +50,16 @@
         android:layout_height="wrap_content"
         android:text="Promociones" />
 
-    <Button
-        android:id="@+id/buttonDisponibles"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Tinkets Disponibles" />
+-->
 
     <Button
         android:id="@+id/buttonHistorial"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Tinkets Usados" />
--->
+
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">

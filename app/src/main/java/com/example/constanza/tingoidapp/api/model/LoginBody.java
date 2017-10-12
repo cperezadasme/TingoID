@@ -3,7 +3,6 @@ package com.example.constanza.tingoidapp.api.model;
 import com.google.gson.annotations.SerializedName;
 
 public class LoginBody {
-    //atributo que sera interpretado
     private String correo;
     private String pass;
 
