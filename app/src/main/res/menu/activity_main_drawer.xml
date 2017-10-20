@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_mi_tingo_id"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Mi Tingo id" />
+
+        <item
+            android:id="@+id/nav_almacenar_compra"
+            android:title="Almacenar compra"
+            />
+        <item
+            android:id="@+id/nav_tinkets_disponibles"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Tinkets Disponibles" />
+        <item
+            android:id="@+id/nav_tinkets_utilizados"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Tinkets Utilizados" />
+        <item
+            android:id="@+id/nav_promociones"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Promociones" />
+    </group>
+
+</menu>

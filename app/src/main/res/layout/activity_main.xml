@@ -1,71 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.constanza.tingoidapp.MainActivity"
-    android:weightSum="1"
-    android:baselineAligned="false"
-    android:orientation="vertical">
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
 
-    <ImageView
-        android:id="@+id/buttonAvatar"
-        android:layout_width="170dp"
-        android:layout_height="170dp"
-        android:layout_gravity="center"
-        app:srcCompat="@drawable/logo_tingo" />
-
-    <!--
-    <Button
-        android:id="@+id/buttonGenerate"
+    <include
+        layout="@layout/app_bar_main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="GenerateQR"
-        android:text="Generar QR" />
--->
-    <Button
-        android:id="@+id/buttonScanner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:text="Almacenar compra" />
-        <!--
-        android:onClick="ScannerQR"
-        -->
+        android:layout_height="match_parent" />
 
-    <Button
-        android:id="@+id/buttonDisponibles"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:text="Tinkets Disponibles" />
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header_main"
+        app:menu="@menu/activity_main_drawer" />
 
-    <!--
-    <Button
-        android:id="@+id/buttonPromociones"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Promociones" />
-
--->
-
-    <Button
-        android:id="@+id/buttonHistorial"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Tinkets Usados" />
-
-    <!--
-    <android.support.design.widget.CoordinatorLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </android.support.design.widget.CoordinatorLayout>
-
--->
-</LinearLayout>
+</android.support.v4.widget.DrawerLayout>

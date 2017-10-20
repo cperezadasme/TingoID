@@ -1,6 +1,7 @@
 package com.example.constanza.tingoidapp;
 
 import android.content.Intent;
+import android.icu.text.SymbolTable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -65,6 +66,7 @@ public class EntradasActivity extends AppCompatActivity {
                         json = response.body().string();
 
                         JSONArray jsonArray = new JSONArray(json);
+
 
                         for (int i=0; i<jsonArray.length(); i++){
                             JSONObject jsonElement = jsonArray.getJSONObject(i);

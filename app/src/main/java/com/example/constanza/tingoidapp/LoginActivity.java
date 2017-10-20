@@ -57,6 +57,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
     private String email; //nombre del usuario (correo)
+    private String id_usuario;
 
     //private String userEmail;
     //private int avatar;
@@ -213,6 +214,7 @@ public class LoginActivity extends AppCompatActivity {
                         String logged = response_json.getString("logged");
                         if (logged.equals("true")){
                             //Toast.makeText(LoginActivity.this,"has ingresado",Toast.LENGTH_LONG).show();
+                            id_usuario = response_json.getString("id");
                             showMainScreen();
 
                         }
@@ -295,6 +297,7 @@ public class LoginActivity extends AppCompatActivity {
     private void showMainScreen() {
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         intent.putExtra("usuario", email);
+        intent.putExtra("id_usuario", id_usuario);
         startActivity(intent);
         mEmailView.setText(null);
         mPasswordView.setText(null);

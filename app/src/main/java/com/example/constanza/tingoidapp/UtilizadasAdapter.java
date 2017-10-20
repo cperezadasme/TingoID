@@ -10,11 +10,12 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+
 import com.example.constanza.tingoidapp.api.model.Tinket;
 
 import java.util.ArrayList;
 
-public class UtilizadasAdapter extends ArrayAdapter{
+public class UtilizadasAdapter extends ArrayAdapter {
     public UtilizadasAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull ArrayList<?> objects) {
         super(context, resource, objects);
     }

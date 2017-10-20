@@ -9,7 +9,7 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="16dp"
-    tools:context="com.example.constanza.tingoidapp.DetalleActivity">
+    tools:context="com.example.constanza.myapplication.DetalleActivity">
 
     <LinearLayout
         android:orientation="horizontal"

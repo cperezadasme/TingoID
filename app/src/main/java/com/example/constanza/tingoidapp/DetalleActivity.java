@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.constanza.tingoidapp.api.TingoApi;
-import com.example.constanza.tingoidapp.api.model.Tinket;
 import com.example.constanza.tingoidapp.api.model.detalleBody;
 
 import org.json.JSONException;
@@ -22,7 +21,6 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class DetalleActivity extends AppCompatActivity {
-
     private Retrofit mRestAdapter;
     private TingoApi mTingoApi;
 
@@ -43,7 +41,7 @@ public class DetalleActivity extends AppCompatActivity {
         //conexion a la api
         mTingoApi = mRestAdapter.create(TingoApi.class);
 
-        Call<ResponseBody> detalleCall = mTingoApi.detalleEntrada(new detalleBody(id_tinket));
+        Call<ResponseBody> detalleCall = mTingoApi.detalleEntrada(new detalleBody("1"));
         detalleCall.enqueue(new Callback<ResponseBody>() {
             String json;
             @Override
@@ -70,14 +68,6 @@ public class DetalleActivity extends AppCompatActivity {
                             TextView textView_tipo = (TextView) findViewById(R.id.detalle_tipo);
                             TextView textView_valor = (TextView) findViewById(R.id.detalle_valor);
 
-                            /*
-                            //prueba
-                            textView_emision.setText("2017-10-10");
-                            textView_empresa.setText("Casino");
-                            textView_expiracion.setText("2017-12-12");
-                            textView_tipo.setText("Almuerzo");
-                            textView_valor.setText("3.0000");
-                            */
                             textView_emision.setText(fecha_emision);
                             textView_empresa.setText(empresa);
                             textView_expiracion.setText(fecha_expiracion);
@@ -99,20 +89,6 @@ public class DetalleActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 }
-                /*
-                TextView textView_emision = (TextView) findViewById(R.id.detalle_emision);
-                TextView textView_empresa = (TextView) findViewById(R.id.detalle_empresa);
-                TextView textView_expiracion = (TextView) findViewById(R.id.detalle_expiracion);
-                TextView textView_tipo = (TextView) findViewById(R.id.detalle_tipo);
-                TextView textView_valor = (TextView) findViewById(R.id.detalle_valor);
-
-                //prueba
-                textView_emision.setText("2017-10-10");
-                textView_empresa.setText("Casino");
-                textView_expiracion.setText("2017-12-12");
-                textView_tipo.setText("Almuerzo");
-                textView_valor.setText("3.0000");
-                */
             }
 
             @Override
@@ -120,7 +96,5 @@ public class DetalleActivity extends AppCompatActivity {
 
             }
         });
-
-
     }
 }
