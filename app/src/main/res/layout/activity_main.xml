@@ -6,8 +6,18 @@
     android:layout_height="match_parent"
     tools:context="com.example.constanza.tingoidapp.MainActivity"
     android:weightSum="1"
+    android:orientation="vertical"
     android:baselineAligned="false"
-    android:orientation="vertical">
+    android:background="@color/cyan_primary_dark">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar_main"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/cyan_primary"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
 
     <ImageView
         android:id="@+id/buttonAvatar"
@@ -16,6 +26,62 @@
         android:layout_gravity="center"
         app:srcCompat="@drawable/logo_tingo" />
 
+    <Button
+        android:id="@+id/buttonScanner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:text="Almacenar compra" />
+    <!--
+    android:onClick="ScannerQR"
+    -->
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="15dp">
+        <ImageButton
+            android:id="@+id/buttonDisponibles"
+            android:layout_width="150sp"
+            android:layout_height="75sp"
+            android:src="@drawable/ticketbuttonorange"
+            android:layout_alignParentTop="true" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="Disponibles"
+            android:textStyle="bold"
+            android:textColor="#000"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_gravity="center">
+        <ImageButton
+            android:id="@+id/buttonHistorial"
+            android:layout_width="150sp"
+            android:layout_height="75sp"
+            android:src="@drawable/ticketbuttoncyan"
+            android:layout_alignParentTop="true" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="Usados"
+            android:textStyle="bold"
+            android:textColor="#000"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            />
+    </RelativeLayout>
     <!--
     <Button
         android:id="@+id/buttonGenerate"
@@ -24,25 +90,16 @@
         android:onClick="GenerateQR"
         android:text="Generar QR" />
 -->
-    <Button
-        android:id="@+id/buttonScanner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:text="Almacenar compra" />
-        <!--
-        android:onClick="ScannerQR"
-        -->
 
+    <!--
     <Button
-        android:id="@+id/buttonDisponibles"
+        android:id="@+id/buttonDisponibles2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:text="Tinkets Disponibles" />
-
+-->
     <!--
     <Button
         android:id="@+id/buttonPromociones"
@@ -51,14 +108,15 @@
         android:text="Promociones" />
 
 -->
-
+<!--
     <Button
-        android:id="@+id/buttonHistorial"
+        android:id="@+id/buttonHistorial2"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Tinkets Usados" />
+-->
 
     <!--
     <android.support.design.widget.CoordinatorLayout

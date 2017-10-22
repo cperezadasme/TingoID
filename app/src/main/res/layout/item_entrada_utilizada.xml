@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,14 +21,14 @@
 
         <TextView
             android:text="Empresa: "
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
             android:id="@+id/empresa_utilizada"
             android:textColor="@color/black"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -32,14 +42,14 @@
 
         <TextView
             android:text="Fecha de Emisión: "
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
             android:id="@+id/emison_utilizada"
             android:textColor="@color/black"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -51,7 +61,7 @@
         android:layout_height="wrap_content">
         <TextView
             android:text="Fecha de utilizacion: "
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -59,7 +69,7 @@
         <TextView
             android:id="@+id/fecha_utilizacion"
             android:layout_width="match_parent"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:layout_height="wrap_content"
             android:textColor="@color/black"/>
     </LinearLayout>

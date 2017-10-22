@@ -1,25 +1,19 @@
 package com.example.constanza.tingoidapp.api;
 
 import com.example.constanza.tingoidapp.api.model.EntradasBody;
-import com.example.constanza.tingoidapp.api.model.Handshaking;
 import com.example.constanza.tingoidapp.api.model.LoginBody;
 import com.example.constanza.tingoidapp.api.model.SignUpBody;
 import com.example.constanza.tingoidapp.api.model.TinketBody;
-import com.example.constanza.tingoidapp.api.model.User;
 import com.example.constanza.tingoidapp.api.model.detalleBody;
-import com.google.gson.JsonObject;
-//import com.example.constanza.tingoidapp.api.model.qrBody;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.Response;
 import retrofit2.http.Body;
-import retrofit2.http.Field;
-import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
-import retrofit2.http.Query;
+
+//import com.example.constanza.tingoidapp.api.model.qrBody;
 
 
 public interface TingoApi {

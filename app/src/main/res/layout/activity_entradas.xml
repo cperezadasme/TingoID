@@ -4,26 +4,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="16dp"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingTop="16dp"
+    android:paddingBottom="0dp"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingTop="0dp"
     tools:context="com.example.constanza.tingoidapp.EntradasActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/cyan_primary_dark">
 
-    <TextView
-        android:id="@+id/entradas_disponibles"
-        android:textSize="20dp"
-        android:textColor="@color/black"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/cyan_primary"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
-    <ListView
-        android:divider="@color/colorPrimary"
-        android:dividerHeight="3dp"
-        android:id="@+id/lista_entradas_disponibles"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:paddingBottom="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="16dp">
+        <TextView
+            android:id="@+id/entradas_disponibles"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-    </ListView>
+        <ListView
+            android:divider="@color/colorPrimary"
+            android:dividerHeight="3dp"
+            android:id="@+id/lista_entradas_disponibles"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </ListView>
+
+
+    </LinearLayout>
+
 </LinearLayout>

@@ -6,18 +6,41 @@
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+
     tools:context="com.example.constanza.tingoidapp.LoginActivity">
 
     <!-- Login progress -->
+    <LinearLayout
+        android:layout_width="match_parent"
+
+
+        android:layout_height = "match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="225dp"
+            android:background="@drawable/loginbackground">
+
+            <ImageView
+                android:id="@+id/name_view"
+                android:layout_width="150dp"
+                android:layout_height="60dp"
+
+                android:layout_below="@+id/login_progress"
+                android:layout_marginTop="150dp"
+                android:layout_toEndOf="@+id/login_progress"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/nombre_tingo" />
+        </LinearLayout>
+    </LinearLayout>
     <ImageView
         android:id="@+id/logo_view"
         android:layout_width="150dp"
         android:layout_height="150dp"
         app:srcCompat="@drawable/logo_tingo"
         android:layout_alignParentTop="true"
+
         android:layout_centerHorizontal="true" />
 
     <ProgressBar
@@ -34,6 +57,8 @@
         android:layout_height="match_parent"
         android:layout_marginTop="77dp"
         android:layout_below="@+id/logo_view"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
         android:layout_alignParentStart="true">
 
         <LinearLayout
@@ -41,6 +66,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:text="Ingresa tus datos:"
+                />
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/float_label_user"
@@ -76,21 +110,118 @@
                     android:singleLine="true" />
 
             </android.support.design.widget.TextInputLayout>
-
+            <!--
             <Button
                 android:id="@+id/email_sign_in_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="23dp"
                 android:text="@string/action_sign_in"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_marginBottom="17dp"
+                android:background="@color/colorAccent"
+                />
+-->
+            <!--
+            <include
+                android:id="@+id/email_sign_in_button"
+                layout="@layout/text_image_button"
+                text="Iniciar Sesión"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginTop="23dp"
+                />
+                -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45sp"
+        android:layout_marginBottom="30sp"
+        android:layout_marginLeft="10sp"
+        android:orientation="horizontal">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left">
+        <ImageButton
+            android:id="@+id/email_sign_in_button"
+            android:layout_width="150sp"
+            android:layout_height="75sp"
+            android:src="@drawable/ticketbuttonorange"
+            android:layout_alignParentTop="true" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="Iniciar Sesión"
+            android:textStyle="bold"
+            android:textColor="#000"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            />
+    </RelativeLayout>
+    <RelativeLayout
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_marginLeft="35sp"
+                 android:layout_gravity="right">
+             <ImageButton
+                 android:id="@+id/sign_up_button"
+                 android:layout_width="150sp"
+                 android:layout_height="75sp"
+                 android:src="@drawable/ticketbuttoncyan"
+                 android:layout_alignParentTop="true" />
+             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="Registrarse"
+                android:textStyle="bold"
+                android:textColor="#000"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+             />
+    </RelativeLayout>
+    </LinearLayout>
 
+
+
+            <!--
             <Button
-                android:id="@+id/sign_up_button"
+                android:id="@+id/email_sign_in_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="17sp"
+
+                android:background="@drawable/ticketbuttonorange"
+                android:drawablePadding="-15sp"
+                android:drawableTop="@drawable/ticketbuttonorange"
+                android:paddingTop="32sp"
+                android:text="Iniciar Sesión"
+                android:textStyle="bold"
+                app:srcCompat="@drawable/ticketbuttonorange" />
+        -->
+            <!--
+            <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Registrarse"
+                android:layout_marginBottom="15dp"
+                android:background="@color/cyan_primary_dark"
                 android:textStyle="bold" />
+                -->
+            <TextView
+                android:id="@+id/forgot_password"
+                android:layout_marginTop="15dp"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:textSize="16sp"
+                android:clickable="true"
+                android:textStyle="bold"
+                android:layout_marginLeft="95dp"
+                android:text="Olvidaste tu contraseña?"
+                />
 
         </LinearLayout>
     </ScrollView>

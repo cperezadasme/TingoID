@@ -4,27 +4,22 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.constanza.tingoidapp.api.model.ApiError;
 import com.example.constanza.tingoidapp.api.TingoApi;
-import com.example.constanza.tingoidapp.api.model.Handshaking;
 import com.example.constanza.tingoidapp.api.model.LoginBody;
-import com.example.constanza.tingoidapp.api.model.User;
-import com.example.constanza.tingoidapp.prefs.SessionPrefs;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -50,6 +45,8 @@ public class LoginActivity extends AppCompatActivity {
     private View mProgressView;
     private View mLoginFormView;
     private ImageView mLogoView;
+    private TextView mlinkLoginMissPass;
+
 
     //PARA EL inicio de sesion
     private TextInputLayout mFloatLabelUser;
@@ -81,8 +78,8 @@ public class LoginActivity extends AppCompatActivity {
         mEmailView = (EditText) findViewById(R.id.email);
 
         mPasswordView = (EditText) findViewById(R.id.password);
-        Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
-        Button mSignUpButton = (Button) findViewById(R.id.sign_up_button);
+        ImageButton mEmailSignInButton = (ImageButton) findViewById(R.id.email_sign_in_button);
+        ImageButton mSignUpButton = (ImageButton) findViewById(R.id.sign_up_button);
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
         mFloatLabelUser = (TextInputLayout) findViewById(R.id.float_label_user);
@@ -129,6 +126,13 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+
+        mlinkLoginMissPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //showMissPassScreen();
+            }
+        });
 
 
     }

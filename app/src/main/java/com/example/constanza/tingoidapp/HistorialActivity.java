@@ -1,7 +1,11 @@
 package com.example.constanza.tingoidapp;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -35,6 +39,11 @@ public class HistorialActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_historial);
+
+        // toolbar
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //conexion al servicio REST
         mRestAdapter = new Retrofit.Builder()
@@ -75,21 +84,24 @@ public class HistorialActivity extends AppCompatActivity {
                             lista_tinkets.add(tinket);
                         }
 
-                        listView = (ListView)findViewById(R.id.lista_entradas_utilizadas);
-                        adapter = new ListaEntradasAdapter(getApplicationContext(),R.layout.item_entrada_utilizada,lista_tinkets);
-                        listView.setAdapter(adapter);
 
-                        /* al hacer click en la lista
-                        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                            @Override
-                            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                                Tinket tinket_seleccionado = (Tinket) adapter.getItem(position);
-                                Intent intent = new Intent(HistorialActivity.this,DetalleActivity.class);
-                                intent.putExtra("id_tinket", tinket_seleccionado.getId());
-                                startActivity(intent);
-                            }
-                        });
-                        */
+                        if (lista_tinkets.size()>0){
+                            listView = (ListView)findViewById(R.id.lista_entradas_utilizadas);
+                            adapter = new ListaEntradasAdapter(getApplicationContext(),R.layout.item_entrada_utilizada,lista_tinkets);
+                            listView.setAdapter(adapter);
+                            // al hacer click en la lista
+                            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                                    Tinket tinket_seleccionado = (Tinket) adapter.getItem(position);
+                                    Intent intent = new Intent(HistorialActivity.this,DetalleActivity.class);
+                                    intent.putExtra("id_tinket", tinket_seleccionado.getId());
+                                    startActivity(intent);
+                                }
+                            });
+
+                        }
+
 
                     }
                 }
