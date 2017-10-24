@@ -10,7 +10,7 @@
     android:paddingTop="0dp"
     tools:context="com.example.constanza.tingoidapp.EntradasActivity"
     android:orientation="vertical"
-    android:background="@color/cyan_primary_dark">
+    android:background="@drawable/tingoback">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/my_toolbar"
@@ -19,7 +19,7 @@
         android:background="@color/cyan_primary"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        android:title="t"/>
+        android:title="Tickets utilizados"/>
 
 
 

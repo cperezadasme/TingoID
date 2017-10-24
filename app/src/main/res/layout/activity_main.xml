@@ -8,7 +8,7 @@
     android:weightSum="1"
     android:orientation="vertical"
     android:baselineAligned="false"
-    android:background="@color/cyan_primary_dark">
+    android:background="@drawable/tingoback">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/my_toolbar_main"
@@ -48,12 +48,13 @@
             android:layout_width="150sp"
             android:layout_height="75sp"
             android:src="@drawable/ticketbuttonorange"
-            android:layout_alignParentTop="true" />
+            android:layout_alignParentTop="true"
+            android:background="#00ffffff"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
-            android:text="Disponibles"
+            android:text="  Tinkets\nDisponibles"
             android:textStyle="bold"
             android:textColor="#000"
             android:layout_centerHorizontal="true"
@@ -70,12 +71,13 @@
             android:layout_width="150sp"
             android:layout_height="75sp"
             android:src="@drawable/ticketbuttoncyan"
-            android:layout_alignParentTop="true" />
+            android:layout_alignParentTop="true"
+            android:background="#00ffffff"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
-            android:text="Usados"
+            android:text="Tinkets Usados"
             android:textStyle="bold"
             android:textColor="#000"
             android:layout_centerHorizontal="true"

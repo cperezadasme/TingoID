@@ -44,13 +44,16 @@
 
         <activity android:name=".EntradasActivity"
             android:parentActivityName=".MainActivity"
-            android:label="Tickets Disponibles"/>
+            android:label="Tickets Disponibles"
+            android:resizeableActivity="true"/>
         <activity android:name=".DetalleActivity"
             android:parentActivityName=".EntradasActivity"
-            android:label="Detalle"/>
+            android:label="Detalle"
+            android:resizeableActivity="true"/>
         <activity android:name=".HistorialActivity"
             android:parentActivityName=".MainActivity"
-            android:label="Tickets Utilizados"/>
+            android:label="Tickets Utilizados"
+            android:resizeableActivity="true"/>
     </application>
 
 </manifest>

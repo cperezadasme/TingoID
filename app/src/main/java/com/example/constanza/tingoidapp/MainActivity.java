@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -61,8 +62,8 @@ public class MainActivity extends AppCompatActivity {
 
         ImageView mImage = (ImageView) findViewById(R.id.buttonAvatar);
         Button mScanner = (Button) findViewById(R.id.buttonScanner);
-        Button mTinketsDisponibles = (Button) findViewById(R.id.buttonDisponibles);
-        Button mTinketsUtilizados = (Button) findViewById(R.id.buttonHistorial);
+        ImageButton mTinketsDisponibles = (ImageButton) findViewById(R.id.buttonDisponibles);
+        ImageButton mTinketsUtilizados = (ImageButton) findViewById(R.id.buttonHistorial);
 
         //obtengo usuario con el que inicia sesión
         String usuario = getIntent().getStringExtra("usuario");
