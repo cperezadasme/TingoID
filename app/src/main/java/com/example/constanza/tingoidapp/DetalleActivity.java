@@ -62,7 +62,7 @@ public class DetalleActivity extends AppCompatActivity {
                             String valor = response_json.getString("valor");
 
                             TextView textView_emision = (TextView) findViewById(R.id.detalle_emision);
-                            TextView textView_utilizacion = (TextView) findViewById(R.id.detalle_utilizacion);
+                            //TextView textView_utilizacion = (TextView) findViewById(R.id.detalle_utilizacion);
                             TextView textView_empresa = (TextView) findViewById(R.id.detalle_empresa);
                             TextView textView_expiracion = (TextView) findViewById(R.id.detalle_expiracion);
                             TextView textView_tipo = (TextView) findViewById(R.id.detalle_tipo);
@@ -74,6 +74,7 @@ public class DetalleActivity extends AppCompatActivity {
                             textView_tipo.setText(tipo);
                             textView_valor.setText(valor);
 
+                            /*
                             if (fecha_utilizacion.equals("2050-12-12")){
                                 textView_utilizacion.setText("Disponible");
                             }
@@ -81,6 +82,7 @@ public class DetalleActivity extends AppCompatActivity {
                             else {
                                 textView_utilizacion.setText(fecha_utilizacion);
                             }
+                            */
 
                         }
 

@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -40,10 +41,13 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, EntradasFragment.OnFragmentInteractionListener,
                 UtilizadasFragment.OnFragmentInteractionListener, TingoQRFragment.OnFragmentInteractionListener{
 
-    public static ArrayList<Tinket> lista_tinkets = new ArrayList<>();
-    public static ArrayList<Tinket> lista_utilizados = new ArrayList<>();
+    public static ArrayList<Tinket> lista_tinkets;
+    public static ArrayList<Tinket> lista_utilizados;
     private TingoApi mTingoApi;
     private Retrofit mRestAdapter;
+
+    public static String usuario;
+    public static String id_usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +66,16 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setItemIconTintList(null);
 
+        TextView user_name = (TextView) findViewById(R.id.user_name);
+        TextView user_email = (TextView) findViewById(R.id.user_email);
+
+        //datos de la activity login
+        usuario = getIntent().getStringExtra("usuario");
+        id_usuario = getIntent().getStringExtra("id_usuario");
+
+        //user_name.setText(usuario);
+        //user_email.setText(usuario);
+
         mRestAdapter = new Retrofit.Builder()
                 .baseUrl(TingoApi.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -69,21 +83,23 @@ public class MainActivity extends AppCompatActivity
 
         mTingoApi = mRestAdapter.create(TingoApi.class);
 
-
         //busca entradas disponibles CAMBIAR POR USUARIO
-        Call<ResponseBody> entradasCall = mTingoApi.entradasDisponibles(new EntradasBody("constanza.soto.12@sansano.usm.cl"));
+        Call<ResponseBody> entradasCall = mTingoApi.entradasDisponibles(new EntradasBody(usuario));
         entradasCall.enqueue(new Callback<ResponseBody>() {
+
             String json;
+
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
 
                 try {
-                    if (response.isSuccessful()){
+                    if (response.isSuccessful()) {
+                        lista_tinkets = new ArrayList<>();
                         json = response.body().string();
 
                         JSONArray jsonArray = new JSONArray(json);
 
-                        for (int i=0; i<jsonArray.length(); i++){
+                        for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jsonElement = jsonArray.getJSONObject(i);
 
                             String id = jsonElement.getString("id");
@@ -93,19 +109,14 @@ public class MainActivity extends AppCompatActivity
                             String valido = jsonElement.getString("valido");
                             String empresa = jsonElement.getString("empresa");
 
-                            Tinket tinket = new Tinket(id,fecha_emision,fecha_utilizacion,fecha_expiracion,valido,empresa);
+                            Tinket tinket = new Tinket(id, fecha_emision, fecha_utilizacion, fecha_expiracion, valido, empresa);
 
                             lista_tinkets.add(tinket);
 
                         }
-                        //agregar fragment al main inicial
-                        Fragment fragment = new EntradasFragment();
-                        getSupportFragmentManager().beginTransaction().replace(R.id.contenedor, fragment).commit();
 
                     }
-                }
-
-                catch (IOException | JSONException e) {
+                } catch (IOException | JSONException e) {
                     e.printStackTrace();
                 }
             }
@@ -119,8 +130,10 @@ public class MainActivity extends AppCompatActivity
 
 
 
+
         //busca entradas utilizadas CAMBIAR POR USUARIO
-        Call<ResponseBody> utilizadasCall = mTingoApi.entradasUtilizadas(new EntradasBody("constanza.soto.12@sansano.usm.cl"));
+
+        Call<ResponseBody> utilizadasCall = mTingoApi.entradasUtilizadas(new EntradasBody(usuario));
         utilizadasCall.enqueue(new Callback<ResponseBody>() {
             String json;
 
@@ -128,12 +141,13 @@ public class MainActivity extends AppCompatActivity
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
 
                 try {
-                    if (response.isSuccessful()){
+                    if (response.isSuccessful()) {
+                        lista_utilizados = new ArrayList<>();
                         json = response.body().string();
 
                         JSONArray jsonArray = new JSONArray(json);
 
-                        for (int i=0; i<jsonArray.length(); i++){
+                        for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jsonElement = jsonArray.getJSONObject(i);
 
                             String id = jsonElement.getString("id");
@@ -143,14 +157,12 @@ public class MainActivity extends AppCompatActivity
                             String valido = jsonElement.getString("valido");
                             String empresa = jsonElement.getString("empresa");
 
-                            Tinket tinket = new Tinket(id,fecha_emision,fecha_utilizacion,fecha_expiracion,valido,empresa);
+                            Tinket tinket = new Tinket(id, fecha_emision, fecha_utilizacion, fecha_expiracion, valido, empresa);
 
                             lista_utilizados.add(tinket);
                         }
                     }
-                }
-
-                catch (IOException e) {
+                } catch (IOException e) {
                     e.printStackTrace();
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -162,6 +174,7 @@ public class MainActivity extends AppCompatActivity
 
             }
         });
+
 
     }
 
@@ -190,9 +203,11 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
+        /*
         if (id == R.id.action_settings) {
             return true;
         }
+        */
 
         return super.onOptionsItemSelected(item);
     }
@@ -251,7 +266,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        String usuario = getIntent().getStringExtra("usuario");
+        //String usuario = getIntent().getStringExtra("usuario");
         IntentResult intentResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if (intentResult != null){
             if(intentResult.getContents()==null){

@@ -84,7 +84,7 @@ public class UtilizadasFragment extends ListFragment {
 
         else {
             TextView usadas = (TextView)rootView.findViewById(R.id.entradas_utilizadas);
-            usadas.setText("No tienes entradas utilizadas");
+            //usadas.setText("No tienes entradas utilizadas");
         }
     }
 

@@ -2,10 +2,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.constanza.myapplication.EntradasFragment">
+    tools:context="com.example.constanza.tingoidapp.EntradasFragment">
 
     <!-- TODO: Update blank fragment layout -->
-
+<!--
     <TextView
         android:id="@+id/entradas_disponibles"
         android:textSize="20dp"
@@ -25,5 +25,58 @@
         android:layout_height="match_parent">
 
     </ListView>
+-->
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="0dp"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
+        android:paddingTop="0dp"
+        android:orientation="vertical"
+        android:background="@drawable/tingoback">
+        <!---
+        tools:context="com.example.constanza.tingoidapp.EntradasActivity"
+        -->
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/my_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/cyan_primary"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="16dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="16dp">
+            <TextView
+                android:id="@+id/entradas_disponibles"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <ListView
+                android:divider="@color/colorPrimary"
+                android:dividerHeight="3dp"
+                android:id="@android:id/list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#25000000">
+
+            </ListView>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </FrameLayout>

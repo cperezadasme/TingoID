@@ -15,6 +15,7 @@ import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -82,8 +83,8 @@ public class LoginActivity extends AppCompatActivity {
         mEmailView = (EditText) findViewById(R.id.email);
 
         mPasswordView = (EditText) findViewById(R.id.password);
-        Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
-        Button mSignUpButton = (Button) findViewById(R.id.sign_up_button);
+        ImageButton mEmailSignInButton = (ImageButton) findViewById(R.id.email_sign_in_button);
+        ImageButton mSignUpButton = (ImageButton) findViewById(R.id.sign_up_button);
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
         mFloatLabelUser = (TextInputLayout) findViewById(R.id.float_label_user);
@@ -213,17 +214,12 @@ public class LoginActivity extends AppCompatActivity {
                         JSONObject response_json = new JSONObject(json);
                         String logged = response_json.getString("logged");
                         if (logged.equals("true")){
-                            //Toast.makeText(LoginActivity.this,"has ingresado",Toast.LENGTH_LONG).show();
                             id_usuario = response_json.getString("id");
                             showMainScreen();
 
                         }
                         else {
                             Toast.makeText(LoginActivity.this,"Cuenta incorrecta",Toast.LENGTH_LONG).show();
-
-
-                            //showMainScreen(); //borrar una vez que funcione
-                            //return;
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();

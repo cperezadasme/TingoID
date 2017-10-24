@@ -86,11 +86,8 @@ public class TingoQRFragment extends Fragment {
         //editText = (EditText)findViewById(R.id.editText);
         //button = (Button)findViewById(R.id.button);
 
-        //String id_usuario = getIntent().getStringExtra("id_usuario");
-
-
         try {
-            bitmap = TextToImageEncode("TID " + "1");
+            bitmap = TextToImageEncode("TID " + MainActivity.id_usuario);
             imageView.setImageBitmap(bitmap);
         } catch (WriterException e) {
             e.printStackTrace();
@@ -98,7 +95,7 @@ public class TingoQRFragment extends Fragment {
 
 
         //contador de cuenta regresiva 5 minutos, esta en milisegundos
-        new CountDownTimer(300000,1000) {
+        new CountDownTimer(30000,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 long minutos = TimeUnit.MILLISECONDS.toMinutes( millisUntilFinished);
@@ -111,8 +108,8 @@ public class TingoQRFragment extends Fragment {
             @Override
             public void onFinish() {
                 //count_down.setText("FINISH!!");
-                //Intent intent = new Intent(GenerateActivity.this, MainActivity.class);
-                //startActivity(intent);
+                Intent intent = new Intent(getActivity().getApplicationContext(), MainActivity.class);
+                startActivity(intent);
             }
         }.start();
 
