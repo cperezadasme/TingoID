@@ -4,25 +4,42 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:paddingTop="12dp"
     android:background="@drawable/ticketbuttonorange">
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:layout_width="90dp"
+        android:layout_height="80dp"
+        android:src="@drawable/logo_tingo_small"
+        android:layout_marginLeft="25dp"
+        android:background="@color/white"
+        android:layout_marginBottom="15dp"/>
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="horizontal"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingLeft="120dp"
+        android:layout_marginBottom="5dp">
 
         <TextView
             android:text="Empresa: "
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textColor="@color/black"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textStyle="bold"/>
         <TextView
             android:id="@+id/empresa_utilizada"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:paddingLeft="120dp"/>
 
     </LinearLayout>
 
@@ -30,14 +47,17 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:paddingLeft="120dp">
 
         <TextView
-            android:text="Fecha de Emisión: "
-            android:textSize="20sp"
+            android:text="Fecha de utilización: "
+            android:textSize="18sp"
             android:textColor="@color/black"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textStyle="bold"/>
         <TextView
             android:id="@+id/emison_utilizada"
             android:textColor="@color/black"
@@ -50,13 +70,16 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingTop="40dp"
+        android:paddingLeft="120dp">
         <TextView
-            android:text="Fecha de utilizacion: "
-            android:textSize="20sp"
+            android:text="Descripción:"
+            android:textSize="18sp"
             android:textColor="@color/black"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/fecha_utilizacion"
@@ -65,6 +88,6 @@
             android:layout_height="wrap_content"
             android:textColor="@color/black"/>
     </LinearLayout>
-
+</RelativeLayout>
 </LinearLayout>
 
