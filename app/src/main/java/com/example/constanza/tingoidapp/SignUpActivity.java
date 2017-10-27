@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -87,7 +88,7 @@ public class SignUpActivity extends AppCompatActivity {
         mConfirmPass = (EditText)findViewById(R.id.confirm_password);
         mlinkLogin = (TextView)findViewById(R.id.login);
         mApellido = (EditText) findViewById(R.id.apellido);
-        Button mSignUpButton = (Button)findViewById(R.id.button_confirm_sign_up);
+        ImageButton mSignUpButton = (ImageButton)findViewById(R.id.button_confirm_sign_up);
 
 
         mConfirmPass.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -232,7 +233,7 @@ public class SignUpActivity extends AppCompatActivity {
                             String usuario_almacenado = response_json.getString("almacenado");
                             if (usuario_almacenado.equals("true")){
                                 Toast.makeText(getApplicationContext(), (String) response_json.get("mensaje"), Toast.LENGTH_LONG).show();
-                                showLoginScreen();
+                                showTutorialScreen();
                             }
                             else {
                                 Toast.makeText(getApplicationContext(), (String) response_json.get("mensaje"), Toast.LENGTH_LONG).show();
@@ -295,9 +296,11 @@ public class SignUpActivity extends AppCompatActivity {
         //finish();
     }
 
-    private void showMainScreen() {
-        startActivity(new Intent(this, MainActivity.class));
+    private void showTutorialScreen(){
+        startActivity(new Intent(this, TutorialActivity.class));
+        //finish();
     }
+
 
     private boolean isPasswordValid(String password, String confirmPass) {
         //TODO: Replace this with your own logic

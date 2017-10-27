@@ -24,4 +24,21 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_settings">Settings</string>
 
+    <!-- Strings Tutorial -->
+    <string name="slide_1_titulo">Bienvenid@ a</string>
+    <string name="slide_1_conten">Almacena todos tus tickets y boletos para validarlos usando tu ÚNICA identificación personal.</string>
+
+    <string name="slide_2_titulo">Primero almacena tus tickets</string>
+    <string name="slide_2_conten">Selecciona la opción en el menú para abrir la cámara de tu dispositivo y escanear el código asociado.</string>
+
+    <string name="slide_3_titulo">Transfórmalos en Tinkets</string>
+    <string name="slide_3_conten">Cada vez que almacenes una nueva compra la podrás visualizar en detalle en tu inventario de Tinkets disponibles.</string>
+
+    <string name="slide_4_titulo">Ahora muestra tu TID</string>
+    <string name="slide_4_conten">Cuando estés por validar tu Tinket, abre la opción para generar tu QR. Este tiene una de 5 minutos y puedes volverlo a activar cuando quieras. </string>
+
+    <string name="slide_5_titulo">Aprovecha Promos</string>
+    <string name="slide_5_conten">Mientras uses la aplicación siempre tendrás acceso a las más nuevas promociones de nuestros comercios asociados. ¡Disfruta de TingoID!</string>
+
+
 </resources>

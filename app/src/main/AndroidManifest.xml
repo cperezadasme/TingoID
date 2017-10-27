@@ -27,20 +27,24 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity android:name=".ScannerActivity" />
         <activity android:name=".GenerateActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".SignUpActivity" />
-        <activity
-            android:name=".UserProfile"
-            android:label="@string/title_activity_user_profile"
-            android:theme="@style/AppTheme" />
         <activity android:name=".EntradasActivity" />
         <activity android:name=".DetalleActivity" />
-        <activity android:name=".HistorialActivity"></activity>
+        <activity android:name=".HistorialActivity" />
+        <activity android:name=".TutorialActivity" />
+        <activity android:name=".StartActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

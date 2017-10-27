@@ -10,7 +10,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/tingoback">
+    android:background="@drawable/bg">
 
     <ImageView
         android:id="@+id/logo"
@@ -28,36 +28,36 @@
         android:layout_below="@+id/logo">
 
         <LinearLayout
-            android:orientation="vertical"
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_below="@+id/logo"
             android:layout_alignParentStart="true"
-            android:id="@+id/linearLayout">
+            android:layout_below="@+id/logo"
+            android:orientation="vertical">
 
             <android.support.design.widget.TextInputLayout
+                android:id="@+id/float_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/logo"
                 android:layout_alignParentStart="true"
-                android:id="@+id/float_email">
+                android:layout_below="@+id/logo">
 
                 <EditText
+                    android:id="@+id/email_sign_up"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/email_sign_up"
+                    android:layout_alignParentStart="true"
                     android:layout_below="@+id/logo"
-                    android:hint="Email"
-                    android:layout_alignParentStart="true" />
+                    android:hint="Email" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
+                android:id="@+id/float_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/float_name"
-                android:layout_below="@+id/float_email"
-                android:layout_alignParentStart="true">
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/float_email">
 
                 <EditText
                     android:id="@+id/name"
@@ -67,11 +67,11 @@
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
+                android:id="@+id/float_apellido"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/float_apellido"
-                android:layout_below="@+id/float_name"
-                android:layout_alignParentStart="true">
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/float_name">
 
                 <EditText
                     android:id="@+id/apellido"
@@ -81,60 +81,80 @@
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
+                android:id="@+id/float_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/float_password"
-                android:layout_below="@+id/float_name"
-                android:layout_alignParentStart="true">
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/float_name">
+
                 <EditText
                     android:id="@+id/password_sign_up"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPassword"
-                    android:hint="Contraseña (Mínimo 4 caracteres)"/>
+                    android:hint="Contraseña (Mínimo 4 caracteres)"
+                    android:inputType="textPassword" />
             </android.support.design.widget.TextInputLayout>
 
 
             <android.support.design.widget.TextInputLayout
+                android:id="@+id/float_confirm_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/float_password"
                 android:layout_alignParentStart="true"
-                android:id="@+id/float_confirm_password">
+                android:layout_below="@+id/float_password">
+
                 <EditText
                     android:id="@+id/confirm_password"
-                    android:imeActionId="@+id/sign_up_action"
-                    android:imeActionLabel="Registrarse"
-                    android:inputType="textPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Repita contraseña"/>
+                    android:hint="Repita contraseña"
+                    android:imeActionId="@+id/sign_up_action"
+                    android:imeActionLabel="Registrarse"
+                    android:inputType="textPassword" />
             </android.support.design.widget.TextInputLayout>
 
-            <Button
-                android:id="@+id/button_confirm_sign_up"
-                android:layout_width="match_parent"
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Registrarse"
-                android:layout_below="@+id/float_confirm_password"
-                android:layout_alignParentStart="true" />
+                android:layout_gravity="center"
+                android:layout_marginTop="12dp">
+
+                <ImageButton
+                    android:id="@+id/button_confirm_sign_up"
+                    android:layout_width="150sp"
+                    android:layout_height="60sp"
+                    android:background="@color/transparent"
+                    android:layout_alignParentTop="true"
+                    android:src="@drawable/ticketbuttoncyan" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:text="Registrarse"
+                    android:textColor="#000"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
 
             <TextView
                 android:id="@+id/login"
-                android:clickable="true"
-                android:layout_gravity="center"
-                android:textStyle="bold"
-                android:textSize="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="27dp"
-                android:text="Tienes Cuenta? Inicia Sesión"
                 android:layout_below="@+id/signup_form"
-                android:layout_centerHorizontal="true" />
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:clickable="true"
+                android:text="Tienes Cuenta? Inicia Sesión"
+                android:textSize="16dp"
+                android:textStyle="bold" />
 
         </LinearLayout>
     </ScrollView>
-
 
 
 </LinearLayout>

@@ -8,32 +8,27 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="0dp"
     android:paddingRight="0dp"
+    android:background="@drawable/bg"
 
     tools:context="com.example.constanza.tingoidapp.LoginActivity">
 
     <!-- Login progress -->
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:background="@drawable/bg"
+        android:layout_height="225dp"
+        >
 
+        <ImageView
+            android:id="@+id/name_view"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
 
-        android:layout_height = "match_parent">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="225dp"
-            >
-
-            <ImageView
-                android:id="@+id/name_view"
-                android:layout_width="150dp"
-                android:layout_height="60dp"
-
-                android:layout_below="@+id/login_progress"
-                android:layout_marginTop="150dp"
-                android:layout_toEndOf="@+id/login_progress"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/nombre_tingo" />
-        </LinearLayout>
+            android:layout_below="@+id/login_progress"
+            android:layout_marginTop="150dp"
+            android:layout_toEndOf="@+id/login_progress"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/nombre_tingo" />
     </LinearLayout>
     <ImageView
         android:id="@+id/logo_view"
@@ -136,11 +131,10 @@
                 />
                 -->
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="45sp"
-                android:layout_marginBottom="30sp"
-                android:layout_marginLeft="10sp"
+                android:layout_marginTop="45dp"
+                android:layout_marginBottom="30dp"
                 android:orientation="horizontal">
                 <RelativeLayout
                     android:layout_width="wrap_content"
@@ -148,14 +142,15 @@
                     android:layout_gravity="left">
                     <ImageButton
                         android:id="@+id/email_sign_in_button"
-                        android:layout_width="150sp"
-                        android:layout_height="75sp"
+                        android:layout_width="150dp"
+                        android:layout_height="75dp"
+                        android:background="@color/transparent"
                         android:src="@drawable/ticketbuttonorange"
                         android:layout_alignParentTop="true" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="18sp"
+                        android:textSize="18dp"
                         android:text="Iniciar Sesión"
                         android:textStyle="bold"
                         android:textColor="#000"
@@ -166,24 +161,27 @@
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="35sp"
+                    android:layout_marginLeft="35dp"
                     android:layout_gravity="right">
                     <ImageButton
                         android:id="@+id/sign_up_button"
-                        android:layout_width="150sp"
-                        android:layout_height="75sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="75dp"
+                        android:background="@color/transparent"
                         android:src="@drawable/ticketbuttoncyan"
-                        android:layout_alignParentTop="true" />
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="17dp" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="18sp"
+                        android:textSize="18dp"
                         android:text="Registrarse"
                         android:textStyle="bold"
                         android:textColor="#000"
                         android:layout_centerHorizontal="true"
                         android:layout_centerVertical="true"
-                        />
+                        android:id="@+id/textView" />
                 </RelativeLayout>
             </LinearLayout>
 
