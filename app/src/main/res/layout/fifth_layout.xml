@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/promo"
+        android:scaleType="centerCrop"
+        android:id="@+id/img5"
+        android:layout_marginTop="170dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/slide_5_titulo"
+        android:textColor="@color/oscuroTid"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:gravity="center_horizontal"
+        android:id="@+id/titulo5"
+        android:layout_alignBottom="@+id/img5"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="98dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:text="@string/slide_5_conten"
+        android:textColor="@color/oscuroTid"
+        android:textSize="20sp"
+        android:textStyle="italic"
+        android:fontFamily="serif"
+        android:gravity="center_horizontal"
+        android:id="@+id/conten5"
+        android:layout_below="@+id/img5" />
+
+</RelativeLayout>
