@@ -135,8 +135,26 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="45dp"
                 android:layout_marginBottom="30dp"
-                android:orientation="horizontal">
-                <RelativeLayout
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <ImageButton
+                    android:id="@+id/email_sign_in_button"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ticketbuttonorange"
+                    android:textColor="@color/oscuroTid"
+                    android:textSize="20sp" />
+
+                <ImageButton
+                    android:id="@+id/sign_up_button"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:background="@drawable/ticketbuttoncyan"
+                    android:textColor="@color/oscuroTid"
+                    android:textSize="20sp" />
+                <!--<RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left">
@@ -182,7 +200,7 @@
                         android:layout_centerHorizontal="true"
                         android:layout_centerVertical="true"
                         android:id="@+id/textView" />
-                </RelativeLayout>
+                </RelativeLayout>-->
             </LinearLayout>
 
 
