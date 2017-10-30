@@ -40,15 +40,6 @@
         <!---
         tools:context="com.example.constanza.tingoidapp.EntradasActivity"
         -->
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/my_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/cyan_primary"
-            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
-
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -65,8 +56,9 @@
                 android:layout_height="wrap_content" />
 
             <ListView
-                android:divider="@color/colorPrimary"
+                android:divider="@null"
                 android:id="@android:id/list"
+                android:dividerHeight="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 

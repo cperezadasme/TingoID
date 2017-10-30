@@ -1,18 +1,11 @@
 package com.example.constanza.tingoidapp;
 
-/**
- * Created by fada on 27-10-17.
- */
-
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * Created by fada on 24-10-17.
- */
 
 public class VpagerAdapter extends PagerAdapter {
 

@@ -40,5 +40,8 @@
     <string name="slide_5_titulo">Aprovecha Promos</string>
     <string name="slide_5_conten">Mientras uses la aplicación siempre tendrás acceso a las más nuevas promociones de nuestros comercios asociados. ¡Disfruta de TingoID!</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
 </resources>

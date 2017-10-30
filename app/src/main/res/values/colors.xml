@@ -6,6 +6,7 @@
     <color name="QRCodeBlackColor">#000000</color>
     <color name="QRCodeWhiteColor">#FFFFFF</color>
     <color name="background_material_light">#f9f8eb</color>
+    <color name="background_light">#b9f9f8eb</color>
     <color name="black">#000000</color>
 
     <!--Custom colors-->

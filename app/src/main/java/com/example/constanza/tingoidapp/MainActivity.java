@@ -12,12 +12,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
 import com.example.constanza.tingoidapp.api.TingoApi;
 import com.example.constanza.tingoidapp.api.model.EntradasBody;
+import com.example.constanza.tingoidapp.api.model.Promocion;
 import com.example.constanza.tingoidapp.api.model.Tinket;
 import com.example.constanza.tingoidapp.api.model.TinketBody;
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -39,10 +41,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, EntradasFragment.OnFragmentInteractionListener,
-                UtilizadasFragment.OnFragmentInteractionListener, TingoQRFragment.OnFragmentInteractionListener{
+                UtilizadasFragment.OnFragmentInteractionListener, TingoQRFragment.OnFragmentInteractionListener,
+                PromocionesFragment.OnFragmentInteractionListener{
 
     public static ArrayList<Tinket> lista_tinkets;
     public static ArrayList<Tinket> lista_utilizados;
+    public static ArrayList<Promocion> lista_promociones;
+
     private TingoApi mTingoApi;
     private Retrofit mRestAdapter;
 
@@ -66,15 +71,17 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setItemIconTintList(null);
 
+        View header = navigationView.getHeaderView(0);
+
         TextView user_name = (TextView) findViewById(R.id.user_name);
-        TextView user_email = (TextView) findViewById(R.id.user_email);
+        TextView user_email = (TextView) header.findViewById(R.id.user_email);
 
         //datos de la activity login
         usuario = getIntent().getStringExtra("usuario");
         id_usuario = getIntent().getStringExtra("id_usuario");
 
         //user_name.setText(usuario);
-        //user_email.setText(usuario);
+        user_email.setText(usuario);
 
         mRestAdapter = new Retrofit.Builder()
                 .baseUrl(TingoApi.BASE_URL)
@@ -127,12 +134,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-
-
-
-
         //busca entradas utilizadas CAMBIAR POR USUARIO
-
         Call<ResponseBody> utilizadasCall = mTingoApi.entradasUtilizadas(new EntradasBody(usuario));
         utilizadasCall.enqueue(new Callback<ResponseBody>() {
             String json;
@@ -160,11 +162,10 @@ public class MainActivity extends AppCompatActivity
                             Tinket tinket = new Tinket(id, fecha_emision, fecha_utilizacion, fecha_expiracion, valido, empresa);
 
                             lista_utilizados.add(tinket);
+                            System.out.print(tinket);
                         }
                     }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (JSONException e) {
+                } catch (IOException | JSONException e) {
                     e.printStackTrace();
                 }
             }
@@ -175,6 +176,74 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+        //Buscar promociones
+        Call <ResponseBody> existentesCall = mTingoApi.promocionesExistentes(new EntradasBody(usuario));
+        existentesCall.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+            }
+        });
+
+        /*
+        Call <ResponseBody> promocionesCall = mTingoApi.mostrarPromociones(new EntradasBody(usuario));
+        promocionesCall.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                String json;
+                try {
+                    if (response.isSuccessful()) {
+                        lista_promociones = new ArrayList<>();
+                        json = response.body().string();
+
+                        JSONArray jsonArray = new JSONArray(json);
+
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject jsonElement = jsonArray.getJSONObject(i);
+
+                            String id_avance = jsonElement.getString("id_avance");
+                            String id_promo = jsonElement.getString("id_promocion");
+                            String descripcion = jsonElement.getString("descripcion");
+                            String fecha_expiracion = jsonElement.getString("fecha_expiracion");
+                            String empresa = jsonElement.getString("empresa");
+                            String avance = jsonElement.getString("avance");
+                            String meta = jsonElement.getString("meta");
+
+                            Promocion promocion = new Promocion(id_avance,id_promo,descripcion,fecha_expiracion,empresa,
+                                    avance,meta);
+
+                            lista_promociones.add(promocion);
+                        }
+                    }
+                } catch (IOException | JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+            }
+        });
+        */
+
+        Call <ResponseBody> avanceCall = mTingoApi.generarAvance(new EntradasBody(usuario));
+        avanceCall.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+            }
+        });
 
     }
 
@@ -232,9 +301,20 @@ public class MainActivity extends AppCompatActivity
             fragment = new UtilizadasFragment();
             fragmento_seleccionado = true;
         } else if (id == R.id.nav_promociones) {
-
+            lista_promociones = new ArrayList<>();
+            Promocion p = new Promocion("1","1","2x1 Almuerzo","10-10-2017","casino","1","2");
+            lista_promociones.add(p);
+            p = new Promocion("2","2","50% descuento en postre","11-10-2017","casino","2","2");
+            lista_promociones.add(p);
+            p = new Promocion("3","3","50% descuento en postre","11-10-2017","casino","1","2");
+            lista_promociones.add(p);
+            p = new Promocion("4","4","2x1 Almuerzo","10-10-2017","casino","1","1");
+            lista_promociones.add(p);
+            fragment = new PromocionesFragment();
+            fragmento_seleccionado = true;
 
         } else if (id == R.id.nav_almacenar_compra) {
+
             IntentIntegrator integrator = new IntentIntegrator(MainActivity.this);
             integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
             integrator.setPrompt("Scan");

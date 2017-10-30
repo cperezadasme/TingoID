@@ -49,4 +49,12 @@ public interface TingoApi {
     @POST("entradasUtilizadas/")
     Call <ResponseBody> entradasUtilizadas(@Body EntradasBody entradasBody);
 
+    @POST("promocionesExistentes/")
+    Call <ResponseBody> promocionesExistentes(@Body EntradasBody entradasBody);
+
+    @POST("generarAvance/")
+    Call <ResponseBody> generarAvance(@Body EntradasBody entradasBody);
+
+    @POST("mostrarPromociones/")
+    Call <ResponseBody> mostrarPromociones(@Body EntradasBody entradasBody);
 }

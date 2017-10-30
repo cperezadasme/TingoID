@@ -3,6 +3,7 @@ package com.example.constanza.tingoidapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
 import com.example.constanza.tingoidapp.api.TingoApi;
@@ -29,6 +30,11 @@ public class DetalleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle);
 
+        // agrega boton back
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         Intent intent = getIntent();
         String id_tinket = intent.getStringExtra("id_tinket");
 
@@ -41,7 +47,7 @@ public class DetalleActivity extends AppCompatActivity {
         //conexion a la api
         mTingoApi = mRestAdapter.create(TingoApi.class);
 
-        Call<ResponseBody> detalleCall = mTingoApi.detalleEntrada(new detalleBody("1"));
+        Call<ResponseBody> detalleCall = mTingoApi.detalleEntrada(new detalleBody(id_tinket));
         detalleCall.enqueue(new Callback<ResponseBody>() {
             String json;
             @Override
