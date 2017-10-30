@@ -7,11 +7,14 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.example.constanza.tingoidapp.api.model.Promocion;
@@ -143,4 +146,27 @@ public class PromocionesFragment extends ListFragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+    /*private void create_Barra(int actual,int meta){
+        if(Barra_layout!=null)
+            Barra_layout.removeAllViews();
+
+        barra = new ImageView[100];
+
+        for (int i = 0; i < 100; i++){
+            barra[i] = new ImageView(this);
+            if (i <= (actual/meta)*100){
+                barra[i].setImageDrawable(ContextCompat.getDrawable(this,R.drawable.promo_avance));
+            }
+            else {
+                dots[i].setImageDrawable(ContextCompat.getDrawable(this,R.drawable.promo_restante));
+            }
+
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+            params.setMargins(0,0,0,0);
+
+            Barra_layout.addView(barra[i],params);
+        }
+
+    }*/
 }

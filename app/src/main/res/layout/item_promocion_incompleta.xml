@@ -28,13 +28,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/progreso"/>
+
         <TextView
             android:text="2/3"
             android:id="@+id/avance_promo"
             android:layout_gravity="end"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@id/progreso"
             android:layout_marginRight="24dp"
             android:textSize="20dp"
             android:textColor="@color/black"/>
