@@ -190,7 +190,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        /*
+
         Call <ResponseBody> promocionesCall = mTingoApi.mostrarPromociones(new EntradasBody(usuario));
         promocionesCall.enqueue(new Callback<ResponseBody>() {
             @Override
@@ -230,7 +230,7 @@ public class MainActivity extends AppCompatActivity
 
             }
         });
-        */
+
 
         Call <ResponseBody> avanceCall = mTingoApi.generarAvance(new EntradasBody(usuario));
         avanceCall.enqueue(new Callback<ResponseBody>() {
@@ -301,6 +301,7 @@ public class MainActivity extends AppCompatActivity
             fragment = new UtilizadasFragment();
             fragmento_seleccionado = true;
         } else if (id == R.id.nav_promociones) {
+            /*
             lista_promociones = new ArrayList<>();
             Promocion p = new Promocion("1","1","2x1 Almuerzo","10-10-2017","casino","1","2");
             lista_promociones.add(p);
@@ -310,6 +311,7 @@ public class MainActivity extends AppCompatActivity
             lista_promociones.add(p);
             p = new Promocion("4","4","2x1 Almuerzo","10-10-2017","casino","1","1");
             lista_promociones.add(p);
+            */
             fragment = new PromocionesFragment();
             fragmento_seleccionado = true;
 

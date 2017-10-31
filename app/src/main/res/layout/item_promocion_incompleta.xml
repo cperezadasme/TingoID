@@ -18,7 +18,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
-            android:text="Postre gratis"
             android:id="@+id/nombre_promo"
             android:layout_marginTop="8dp"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
@@ -35,7 +34,6 @@
             android:id="@+id/progreso"/>
 
         <TextView
-            android:text="2/3"
             android:id="@+id/avance_promo"
             android:layout_gravity="end"
             android:layout_width="wrap_content"
@@ -46,7 +44,6 @@
             android:textColor="@color/black"/>
 
         <TextView
-            android:text="20-10-2000"
             android:id="@+id/fecha_exp_promo"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginRight="24dp"

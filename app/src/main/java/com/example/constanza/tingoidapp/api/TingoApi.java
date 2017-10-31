@@ -7,6 +7,7 @@ import com.example.constanza.tingoidapp.api.model.SignUpBody;
 import com.example.constanza.tingoidapp.api.model.TinketBody;
 import com.example.constanza.tingoidapp.api.model.User;
 import com.example.constanza.tingoidapp.api.model.detalleBody;
+import com.example.constanza.tingoidapp.api.model.promocionBody;
 import com.google.gson.JsonObject;
 //import com.example.constanza.tingoidapp.api.model.qrBody;
 
@@ -57,4 +58,7 @@ public interface TingoApi {
 
     @POST("mostrarPromociones/")
     Call <ResponseBody> mostrarPromociones(@Body EntradasBody entradasBody);
+
+    @POST("detallePromocion/")
+    Call <ResponseBody> detallePromocion(@Body promocionBody promo);
 }
