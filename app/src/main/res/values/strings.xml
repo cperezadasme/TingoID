@@ -29,7 +29,7 @@
     <string name="slide_1_conten">Almacena todos tus tickets y boletos para validarlos usando tu ÚNICA identificación personal.</string>
 
     <string name="slide_2_titulo">Primero almacena tus tickets</string>
-    <string name="slide_2_conten">Selecciona la opción en el menú para abrir la cámara de tu dispositivo y escanear el código asociado.</string>
+    <string name="slide_2_conten">Selecciona la opción Almacenar Compra en el menú para abrir la cámara de tu dispositivo y escanear el código asociado.</string>
 
     <string name="slide_3_titulo">Transfórmalos en Tinkets</string>
     <string name="slide_3_conten">Cada vez que almacenes una nueva compra la podrás visualizar en detalle en tu inventario de Tinkets disponibles.</string>
