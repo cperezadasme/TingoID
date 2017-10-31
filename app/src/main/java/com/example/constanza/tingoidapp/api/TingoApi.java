@@ -7,6 +7,7 @@ import com.example.constanza.tingoidapp.api.model.SignUpBody;
 import com.example.constanza.tingoidapp.api.model.TinketBody;
 import com.example.constanza.tingoidapp.api.model.User;
 import com.example.constanza.tingoidapp.api.model.detalleBody;
+import com.example.constanza.tingoidapp.api.model.promocionBody;
 import com.google.gson.JsonObject;
 //import com.example.constanza.tingoidapp.api.model.qrBody;
 
@@ -26,7 +27,7 @@ public interface TingoApi {
     // TODO: Cambiar host por "10.0.3.2" para Genymotion.
     // TODO: Cambiar host por "10.0.2.2" para AVD.
     // TODO: Cambiar host por IP de tu PC para dispositivo real.
-    public static final String BASE_URL = "http://10.0.2.2:8000/tingo/";
+    public static final String BASE_URL = "http://10.6.43.212:8000/tingo/";
 
     @GET ("handshaking/")
     Call <ResponseBody> handshaking();
@@ -57,4 +58,7 @@ public interface TingoApi {
 
     @POST("mostrarPromociones/")
     Call <ResponseBody> mostrarPromociones(@Body EntradasBody entradasBody);
+
+    @POST("detallePromocion/")
+    Call <ResponseBody> detallePromocion(@Body promocionBody promo);
 }

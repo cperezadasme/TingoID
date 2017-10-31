@@ -66,7 +66,7 @@ public class PromocionesAdapter extends ArrayAdapter {
         //Setup
         if (promocion!=null){
             nombre_promo.setText(promocion.getDescripcion());
-            avance_promo.setText(promocion.getAvance());
+            avance_promo.setText(promocion.getAvance()+"/"+promocion.getMeta());
             fecha_expiracion.setText(promocion.getFecha_expiracion());
         }
 

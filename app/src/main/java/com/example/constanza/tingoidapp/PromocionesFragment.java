@@ -20,6 +20,7 @@ import java.util.ArrayList;
 
 import static android.R.id.list;
 import static com.example.constanza.tingoidapp.MainActivity.lista_promociones;
+import static com.example.constanza.tingoidapp.MainActivity.usuario;
 
 
 /**
@@ -91,6 +92,7 @@ public class PromocionesFragment extends ListFragment {
                     Intent intent = new Intent(getActivity().getApplicationContext(),PromoDetalleActivity.class);
                     intent.putExtra("id_avance", promocion_seleccionada.getId_avance());
                     intent.putExtra("id_promocion", promocion_seleccionada.getId_promocion());
+                    intent.putExtra("usuario", usuario);
                     startActivity(intent);
                 }
             });
