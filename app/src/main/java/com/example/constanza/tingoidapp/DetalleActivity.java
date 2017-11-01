@@ -29,6 +29,7 @@ public class DetalleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle);
+        setTitle("Detalle Tinket");
 
         // agrega boton back
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);

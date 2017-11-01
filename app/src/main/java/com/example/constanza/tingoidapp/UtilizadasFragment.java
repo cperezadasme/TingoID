@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 
 import com.example.constanza.tingoidapp.api.model.Tinket;
@@ -93,6 +94,7 @@ public class UtilizadasFragment extends ListFragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_entradas, container, false);
+
         return rootView;
     }
 

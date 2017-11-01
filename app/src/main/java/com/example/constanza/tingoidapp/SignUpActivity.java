@@ -65,7 +65,6 @@ public class SignUpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-
         //conexion al servicio REST
         mRestAdapter = new Retrofit.Builder()
                 .baseUrl(TingoApi.BASE_URL)

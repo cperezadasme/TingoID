@@ -38,7 +38,6 @@ public class PromocionesAdapter extends ArrayAdapter {
         LayoutInflater inflater = (LayoutInflater) getContext()
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-
         if (convertView == null) {
             convertView = inflater.inflate(
                     R.layout.item_promocion,

@@ -33,6 +33,7 @@ public class PromoDetalleActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_promo_detalle);
+        setTitle("Detalle Promoción");
 
         // agrega boton back
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);

@@ -13,11 +13,12 @@
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/my_toolbar"
+        app:titleTextColor="@color/white"
+        app:subtitleTextColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/oscuroTid"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+        app:popupTheme="@style/ThemeOverlay.AppCompat"/>
 
     <LinearLayout
         android:layout_width="wrap_content"

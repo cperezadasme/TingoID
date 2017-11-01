@@ -9,11 +9,11 @@
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/my_toolbar"
+        app:titleTextColor="@color/white"
+        app:subtitleTextColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:background="@color/oscuroTid"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         tools:layout_editor_absoluteY="0dp"
         tools:layout_editor_absoluteX="8dp" />
 
