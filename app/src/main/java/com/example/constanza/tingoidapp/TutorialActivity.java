@@ -54,7 +54,7 @@ public class TutorialActivity extends AppCompatActivity implements View.OnClickL
                     Skip.setVisibility(View.INVISIBLE);
                 }
                 else {
-                    Next.setText("hecho");
+                    Next.setText("siguiente");
                     Skip.setVisibility(View.VISIBLE);
                 }
 

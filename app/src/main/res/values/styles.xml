@@ -3,7 +3,7 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">/
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/celesteTid</item>
+        <item name="colorPrimary">@color/oscuroTid</item>
         <item name="colorPrimaryDark">@color/oscuroTid</item>
         <item name="colorAccent">@color/naranjaTid</item>
     </style>

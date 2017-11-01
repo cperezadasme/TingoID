@@ -22,4 +22,12 @@
         android:layout_below="@+id/button"
         android:layout_weight="0.00" />
 
+    <pl.droidsonroids.gif.GifImageView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="bottom"
+        android:src="@drawable/gif"
+        android:background="@color/transparent"
+        />
+
 </FrameLayout>

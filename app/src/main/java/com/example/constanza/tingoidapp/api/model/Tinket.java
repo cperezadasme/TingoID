@@ -1,6 +1,7 @@
 package com.example.constanza.tingoidapp.api.model;
 
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 public class Tinket {
     private String id;
@@ -9,14 +10,16 @@ public class Tinket {
     private String fecha_expiracion;
     private String valido;
     private String empresa;
+    private String detalle;
 
-    public Tinket(String id, String fecha_emision, String fecha_utilizacion, String fecha_expiracion, String valido, String empresa) {
+    public Tinket(String id, String fecha_emision, String fecha_utilizacion, String fecha_expiracion, String valido, String empresa, String detalle) {
         this.id = id;
         this.fecha_emision = fecha_emision;
         this.fecha_utilizacion = fecha_utilizacion;
         this.fecha_expiracion = fecha_expiracion;
         this.valido = valido;
         this.empresa = empresa;
+        this.detalle = detalle;
     }
 
     public String getId() {
@@ -70,6 +73,10 @@ public class Tinket {
     public void setEmpresa(String empresa) {
         this.empresa = empresa;
     }
+
+    public String getDetalle() {return detalle; }
+
+    public void  setDetalle(String detalle) {this.detalle = detalle;}
 
     public static Tinket getItem(int id, ArrayList<Tinket> lista){
         for (int i=0; i<lista.size();i++){

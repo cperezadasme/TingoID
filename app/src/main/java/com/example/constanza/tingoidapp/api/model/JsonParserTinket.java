@@ -38,6 +38,8 @@ public class JsonParserTinket {
         String fecha_expiracion = null;
         String valido = null;
         String empresa = null;
+        String detalle = null;
+        String imagen = null;
 
         reader.beginObject();
         while (reader.hasNext()){
@@ -61,9 +63,12 @@ public class JsonParserTinket {
                 case "empresa":
                     empresa = reader.nextString();
                     break;
+                case "detalle":
+                    detalle = reader.nextString();
+                    break;
             }
         }
         reader.endObject();
-        return new Tinket(id,fecha_emision,fecha_utilizacion,fecha_expiracion,valido,empresa);
+        return new Tinket(id,fecha_emision,fecha_utilizacion,fecha_expiracion,valido,empresa, detalle);
     }
 }

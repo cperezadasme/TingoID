@@ -73,8 +73,9 @@ public class HistorialActivity extends AppCompatActivity {
                             String fecha_expiracion = jsonElement.getString("fecha_expiracion");
                             String valido = jsonElement.getString("valido");
                             String empresa = jsonElement.getString("empresa");
+                            String detalle = jsonElement.getString("tipo");
 
-                            Tinket tinket = new Tinket(id,fecha_emision,fecha_utilizacion,fecha_expiracion,valido,empresa);
+                            Tinket tinket = new Tinket(id,fecha_emision,fecha_utilizacion,fecha_expiracion,valido,empresa, detalle);
 
                             lista_tinkets.add(tinket);
                         }

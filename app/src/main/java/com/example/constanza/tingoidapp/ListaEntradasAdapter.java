@@ -48,7 +48,7 @@ public class ListaEntradasAdapter extends ArrayAdapter {
 
         //Referencias UI
         TextView empresa = (TextView) convertView.findViewById(R.id.empresa_tinket);
-        TextView fecha_emision = (TextView) convertView.findViewById(R.id.fecha_emision_tinket);
+        TextView tipo = (TextView) convertView.findViewById(R.id.detalle_tinket);
         TextView fecha_expiracion = (TextView) convertView.findViewById(R.id.fecha_expiracion_tinket);
 
         //tinket actual
@@ -57,7 +57,7 @@ public class ListaEntradasAdapter extends ArrayAdapter {
         //Setup
         if (item!=null){
             empresa.setText(item.getEmpresa());
-            fecha_emision.setText(item.getFecha_emision());
+            tipo.setText(item.getDetalle());
             fecha_expiracion.setText(item.getFecha_expiracion());
         }
 

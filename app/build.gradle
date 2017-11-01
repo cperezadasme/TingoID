@@ -26,6 +26,9 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
 
     })
+    //dependencias para gif
+    compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.8'
+
     //dependencias para el scanner QR
 
     //compile 'com.google.android.gms:play-services:11.0.2'

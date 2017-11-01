@@ -1,14 +1,11 @@
 package com.example.constanza.tingoidapp;
 
 import android.content.Intent;
-import android.icu.text.SymbolTable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -77,8 +74,9 @@ public class EntradasActivity extends AppCompatActivity {
                             String fecha_expiracion = jsonElement.getString("fecha_expiracion");
                             String valido = jsonElement.getString("valido");
                             String empresa = jsonElement.getString("empresa");
+                            String detalle = jsonElement.getString("tipo");
 
-                            Tinket tinket = new Tinket(id,fecha_emision,fecha_utilizacion,fecha_expiracion,valido,empresa);
+                            Tinket tinket = new Tinket(id,fecha_emision,fecha_utilizacion,fecha_expiracion,valido,empresa, detalle);
 
                             lista_tinkets.add(tinket);
                         }
