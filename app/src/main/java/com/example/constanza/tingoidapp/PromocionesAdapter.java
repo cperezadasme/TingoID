@@ -19,8 +19,8 @@ import com.example.constanza.tingoidapp.api.model.Tinket;
 import java.util.ArrayList;
 
 public class PromocionesAdapter extends ArrayAdapter {
-    //private LinearLayout Barra_layout;
-    //private ImageView[] barra;
+    private LinearLayout Barra_layout;
+    private ImageView[] barra;
 
     public PromocionesAdapter (@NonNull Context context, @LayoutRes int resource, @NonNull ArrayList<?> objects) {
         super(context, resource, objects);
@@ -38,14 +38,13 @@ public class PromocionesAdapter extends ArrayAdapter {
         LayoutInflater inflater = (LayoutInflater) getContext()
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-
         if (convertView == null) {
             convertView = inflater.inflate(
                     R.layout.item_promocion,
                     parent,
                     false);
 
-            // convertView = mInflater.inflate(R.layout.item_entrada_disponible,parent,false);
+            //convertView = mInflater.inflate(R.layout.item_entrada_disponible,parent,false);
         }
 
 
@@ -70,9 +69,8 @@ public class PromocionesAdapter extends ArrayAdapter {
         TextView nombre_promo = (TextView) convertView.findViewById(R.id.nombre_promo);
         TextView avance_promo = (TextView) convertView.findViewById(R.id.avance_promo);
         TextView fecha_expiracion = (TextView) convertView.findViewById(R.id.fecha_exp_promo);
-        //Barra_layout = (LinearLayout) convertView.findViewById(R.id.progreso);
         //create_Barra(Integer.valueOf(promocion.getAvance()),Integer.valueOf(promocion.getMeta()));
-        //create_Barra(2,3);
+
 
 
         //Setup
@@ -80,13 +78,13 @@ public class PromocionesAdapter extends ArrayAdapter {
             nombre_promo.setText(promocion.getDescripcion());
             avance_promo.setText(promocion.getAvance()+"/"+promocion.getMeta());
             fecha_expiracion.setText(promocion.getFecha_expiracion());
+            //create_Barra(2,3);
         }
-
-
 
         return convertView;
     }
-    /*private void create_Barra(int actual,int meta){
+
+    /*private void create_Barra(int actual, int meta) {
         if(Barra_layout!=null)
             Barra_layout.removeAllViews();
 
@@ -106,6 +104,6 @@ public class PromocionesAdapter extends ArrayAdapter {
 
             Barra_layout.addView(barra[i],params);
         }
-
     }*/
+
 }

@@ -45,8 +45,9 @@ public class UtilizadasAdapter extends ArrayAdapter {
         //Referencias UI
         TextView empresa = (TextView) convertView.findViewById(R.id.empresa_utilizada);
         TextView tipo = (TextView) convertView.findViewById(R.id.detalle_usada);
-        TextView fecha_expiracion = (TextView) convertView.findViewById(R.id.fecha_utilizacion);
-        ImageView imagen = (ImageView) convertView.findViewById(R.id.imagen_usada);
+        TextView uso = (TextView) convertView.findViewById(R.id.ocupada);
+        TextView fecha_uso = (TextView) convertView.findViewById(R.id.fecha_utilizacion);
+        //ImageView imagen = (ImageView) convertView.findViewById(R.id.imagen_usada);
 
         //tinket actual
         Tinket item = (Tinket) getItem(position);
@@ -60,7 +61,12 @@ public class UtilizadasAdapter extends ArrayAdapter {
 
             empresa.setText(item.getEmpresa());
             tipo.setText(item.getDetalle());
-            fecha_expiracion.setText(item.getFecha_utilizacion());
+            if ((item.getFecha_utilizacion()).equalsIgnoreCase("12 Dec. 2050")) {
+                uso.setText("Expiró el ");
+                fecha_uso.setText(item.getFecha_expiracion());
+            } else {
+                fecha_uso.setText(item.getFecha_utilizacion());
+            }
         }
 
         return convertView;
