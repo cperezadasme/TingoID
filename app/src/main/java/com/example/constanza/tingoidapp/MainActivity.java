@@ -293,6 +293,19 @@ public class MainActivity extends AppCompatActivity
         Fragment fragment = null;
 
         if (id == R.id.nav_mi_tingo_id) {
+            Call <ResponseBody> QRCall = mTingoApi.mostrarQR(new EntradasBody(usuario));
+            QRCall.enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
+                }
+
+                @Override
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+                }
+            });
+
             fragment = new TingoQRFragment();
             fragmento_seleccionado = true;
         } else if (id == R.id.nav_tinkets_disponibles) {
@@ -303,17 +316,7 @@ public class MainActivity extends AppCompatActivity
             fragment = new UtilizadasFragment();
             fragmento_seleccionado = true;
         } else if (id == R.id.nav_promociones) {
-            /*
-            lista_promociones = new ArrayList<>();
-            Promocion p = new Promocion("1","1","2x1 Almuerzo","10-10-2017","casino","1","2");
-            lista_promociones.add(p);
-            p = new Promocion("2","2","50% descuento en postre","11-10-2017","casino","2","2");
-            lista_promociones.add(p);
-            p = new Promocion("3","3","50% descuento en postre","11-10-2017","casino","1","2");
-            lista_promociones.add(p);
-            p = new Promocion("4","4","2x1 Almuerzo","10-10-2017","casino","1","1");
-            lista_promociones.add(p);
-            */
+
             fragment = new PromocionesFragment();
             fragmento_seleccionado = true;
 

@@ -47,7 +47,7 @@ public class UtilizadasAdapter extends ArrayAdapter {
         TextView tipo = (TextView) convertView.findViewById(R.id.detalle_usada);
         TextView uso = (TextView) convertView.findViewById(R.id.ocupada);
         TextView fecha_uso = (TextView) convertView.findViewById(R.id.fecha_utilizacion);
-        //ImageView imagen = (ImageView) convertView.findViewById(R.id.imagen_usada);
+        ImageView imagen = (ImageView) convertView.findViewById(R.id.imagen_usada);
 
         //tinket actual
         Tinket item = (Tinket) getItem(position);
@@ -59,8 +59,10 @@ public class UtilizadasAdapter extends ArrayAdapter {
             Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
             imagen.setImageBitmap(decodedByte);*/
 
+            imagen.setImageResource(R.drawable.empresa1);
             empresa.setText(item.getEmpresa());
             tipo.setText(item.getDetalle());
+
             if ((item.getFecha_utilizacion()).equalsIgnoreCase("12 Dec. 2050")) {
                 uso.setText("Expiró el ");
                 fecha_uso.setText(item.getFecha_expiracion());

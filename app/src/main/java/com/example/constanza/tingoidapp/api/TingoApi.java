@@ -3,6 +3,7 @@ package com.example.constanza.tingoidapp.api;
 import com.example.constanza.tingoidapp.api.model.EntradasBody;
 import com.example.constanza.tingoidapp.api.model.Handshaking;
 import com.example.constanza.tingoidapp.api.model.LoginBody;
+import com.example.constanza.tingoidapp.api.model.PromoDetalleBody;
 import com.example.constanza.tingoidapp.api.model.SignUpBody;
 import com.example.constanza.tingoidapp.api.model.TinketBody;
 import com.example.constanza.tingoidapp.api.model.User;
@@ -61,4 +62,10 @@ public interface TingoApi {
 
     @POST("detallePromocion/")
     Call <ResponseBody> detallePromocion(@Body promocionBody promo);
+
+    @POST("mostrarQR/")
+    Call <ResponseBody> mostrarQR (@Body EntradasBody entradasBody);
+
+    @POST("generarCodigo/")
+    Call <ResponseBody> generarCodigo (@Body PromoDetalleBody promoDetalleBody);
 }

@@ -1,43 +1,82 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:screenOrientation = "portrait"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.constanza.tingoidapp.PromocionesFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.example.constanza.tingoidapp.PromocionesFragment"
+    >
 
     <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="0dp"
-        android:paddingLeft="0dp"
-        android:paddingRight="0dp"
-        android:paddingTop="0dp"
-        android:orientation="vertical"
         android:background="@drawable/bg">
-        <!--
-        tools:context="com.example.constanza.tingoidapp.EntradasActivity"
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/my_toolbar"
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp"
+            android:background="@color/background_material_light"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/cyan_primary"
-            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            android:title="Tickets utilizados"/>
-            -->
+            android:layout_height="wrap_content">
 
-        <ListView
-            android:divider="@null"
-            android:dividerHeight="10dp"
-            android:id="@android:id/list"
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_marginTop="4dp"
+                android:layout_width="60sp"
+                android:layout_height="60sp"
+                android:layout_marginLeft="70sp"
+                app:srcCompat="@drawable/empresa1" />
+
+            <TextView
+                android:text="Casino USM"
+                android:id="@+id/casino_tv"
+                android:textSize="30sp"
+                android:layout_marginLeft="10sp"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingRight="16dp"
-            android:paddingLeft="16dp"
-            android:textColor="@color/white">
+            android:layout_height="match_parent"
+            android:layout_marginTop="10sp"
+            android:paddingBottom="0dp"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:paddingTop="0dp"
+            android:orientation="vertical">
+            <!--
+            tools:context="com.example.constanza.tingoidapp.EntradasActivity"
 
-        </ListView>
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/my_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/cyan_primary"
+                android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                android:title="Tickets utilizados"/>
+                -->
+
+            <ListView
+                android:divider="@null"
+                android:dividerHeight="10dp"
+                android:id="@android:id/list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingRight="16dp"
+                android:paddingLeft="16dp"
+                android:textColor="@color/white">
+
+            </ListView>
+
+        </LinearLayout>
 
     </LinearLayout>
+
+
 
 </FrameLayout>

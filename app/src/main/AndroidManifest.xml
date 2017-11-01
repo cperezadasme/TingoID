@@ -45,7 +45,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PromoDetalleActivity"></activity>
+        <activity android:name=".PromoDetalleActivity" />
+        <activity android:name=".GenerarCodigoActivity"></activity>
     </application>
 
 </manifest>

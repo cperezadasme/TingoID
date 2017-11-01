@@ -5,12 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.LinearLayout;
+import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.constanza.tingoidapp.api.TingoApi;
-import com.example.constanza.tingoidapp.api.model.detalleBody;
 import com.example.constanza.tingoidapp.api.model.promocionBody;
 
 import org.json.JSONException;
@@ -66,22 +65,23 @@ public class PromoDetalleActivity extends AppCompatActivity {
                         String encontrado = response_json.getString("encontrado");
                         if (encontrado.equals("true")){
                             String id_promocion = response_json.getString("id_promocion");
-                            String id_avance = response_json.getString("id_avance");
+                            final String id_avance = response_json.getString("id_avance");
                             String fecha_emision = response_json.getString("fecha_emision");
-                            String fecha_expiracion = response_json.getString("fecha_expiracion");
+                            final String fecha_expiracion = response_json.getString("fecha_expiracion");
                             String avance = response_json.getString("avance");
                             String meta = response_json.getString("meta");
-                            String descripcion = response_json.getString("descripcion");
+                            final String descripcion = response_json.getString("descripcion");
                             String empresa = response_json.getString("empresa");
                             String generar_codigo = response_json.getString("generar_codigo");
 
-                            TextView textView_descripcion = (TextView) findViewById(R.id.descripcion_promo);
+                            TextView textView_descripcion = (TextView) findViewById(R.id.descripcion_promo_codigo);
                             TextView avance_meta = (TextView) findViewById(R.id.mensaje_avance_promo);
-                            TextView textView_expiracion = (TextView) findViewById(R.id.fecha_venciomiento_promo);
+                            TextView textView_expiracion = (TextView) findViewById(R.id.fecha_venciomiento_codigo);
                             RelativeLayout layout_codigo = (RelativeLayout) findViewById(R.id.layout_meta);
+                            ImageButton generarCodigo = (ImageButton)findViewById(R.id.boton_genarar_codigo);
 
                             if (generar_codigo.equals("true")){
-                             layout_codigo.setVisibility(View.VISIBLE);
+                                layout_codigo.setVisibility(View.VISIBLE);
                             }
 
                             else {
@@ -91,6 +91,17 @@ public class PromoDetalleActivity extends AppCompatActivity {
                             textView_descripcion.setText(descripcion);
                             textView_expiracion.setText(fecha_expiracion);
                             avance_meta.setText(avance+"/"+meta);
+
+                            generarCodigo.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    Intent intent1 = new Intent(PromoDetalleActivity.this, GenerarCodigoActivity.class);
+                                    intent1.putExtra("descripcion", descripcion);
+                                    intent1.putExtra("id_avance",id_avance);
+                                    intent1.putExtra("fecha_vencimiento",fecha_expiracion);
+                                    startActivity(intent1);
+                                }
+                            });
                         }
 
 

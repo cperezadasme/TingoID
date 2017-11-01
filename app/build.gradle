@@ -27,11 +27,12 @@ dependencies {
 
     })
     //dependencias para gif
-    compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.8'
+    
 
     //dependencias para el scanner QR
 
     //compile 'com.google.android.gms:play-services:11.0.2'
+    compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.8'
     compile 'com.android.support:multidex:1.0.1'
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'

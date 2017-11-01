@@ -2,6 +2,8 @@ package com.example.constanza.tingoidapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.AssetManager;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,6 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.constanza.tingoidapp.api.model.Promocion;
 
@@ -44,6 +47,7 @@ public class PromocionesFragment extends ListFragment {
     private ArrayAdapter adapter;
     private ListView listView;
     private View rootView;
+    private TextView casino;
 
 
     private OnFragmentInteractionListener mListener;
@@ -78,6 +82,12 @@ public class PromocionesFragment extends ListFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        casino =(TextView)rootView.findViewById(R.id.casino_tv);
+        String font_path = "fonts/ThrowMyHandsUpintheAirBold.ttf";
+        Typeface TF = Typeface.createFromAsset(getContext().getAssets(),font_path) ;
+        casino.setTypeface(TF);
+
         ArrayList<Promocion> lista;
 
         lista = lista_promociones;
@@ -133,6 +143,8 @@ public class PromocionesFragment extends ListFragment {
         super.onDetach();
         mListener = null;
     }
+
+
 
     /**
      * This interface must be implemented by activities that contain this

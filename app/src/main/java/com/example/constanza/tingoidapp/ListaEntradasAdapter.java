@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.constanza.tingoidapp.api.model.Tinket;
@@ -50,6 +51,7 @@ public class ListaEntradasAdapter extends ArrayAdapter {
         TextView empresa = (TextView) convertView.findViewById(R.id.empresa_tinket);
         TextView tipo = (TextView) convertView.findViewById(R.id.detalle_tinket);
         TextView fecha_expiracion = (TextView) convertView.findViewById(R.id.fecha_expiracion_tinket);
+        ImageView imagen = (ImageView) convertView.findViewById(R.id.imagen_disponible);
 
         //tinket actual
         Tinket item = (Tinket) getItem(position);
@@ -59,6 +61,7 @@ public class ListaEntradasAdapter extends ArrayAdapter {
             empresa.setText(item.getEmpresa());
             tipo.setText(item.getDetalle());
             fecha_expiracion.setText(item.getFecha_expiracion());
+            imagen.setImageResource(R.drawable.empresa1);
         }
 
         return convertView;

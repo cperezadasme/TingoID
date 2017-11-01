@@ -38,6 +38,7 @@ public class PromocionesAdapter extends ArrayAdapter {
         LayoutInflater inflater = (LayoutInflater) getContext()
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
+
         if (convertView == null) {
             convertView = inflater.inflate(
                     R.layout.item_promocion,
@@ -49,7 +50,15 @@ public class PromocionesAdapter extends ArrayAdapter {
 
 
         Promocion promocion = (Promocion) getItem(position);
-        /*
+        LinearLayout bg = (LinearLayout)convertView.findViewById(R.id.bg_promo);
+        if (promocion.getAvance().equals(promocion.getMeta())){
+            bg.setBackgroundResource(R.drawable.ticketdettailcyan);
+        }
+        else{
+            bg.setBackgroundResource(R.drawable.ticketdettailorange);
+        }
+
+/*
         if (promocion.getAvance().equals(promocion.getMeta())){
             convertView = inflater.inflate(
                     R.layout.item_promocion,
