@@ -215,6 +215,7 @@ public class LoginActivity extends AppCompatActivity {
                         String logged = response_json.getString("logged");
                         if (logged.equals("true")){
                             id_usuario = response_json.getString("id");
+                            SessionPrefs.get(LoginActivity.this).saveUser(new User(email,id_usuario));
                             showMainScreen();
 
                         }
@@ -249,7 +250,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     showMainScreen();
                     */
-                    SessionPrefs.get(LoginActivity.this).saveUser(new User(email));
+                    SessionPrefs.get(LoginActivity.this).saveUser(new User(email,id_usuario));
 
                 }
 

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -74,12 +75,24 @@ public class PromoDetalleActivity extends AppCompatActivity {
                             final String descripcion = response_json.getString("descripcion");
                             String empresa = response_json.getString("empresa");
                             String generar_codigo = response_json.getString("generar_codigo");
+                            String imagen = response_json.getString("imagen");
 
                             TextView textView_descripcion = (TextView) findViewById(R.id.descripcion_promo_codigo);
                             TextView avance_meta = (TextView) findViewById(R.id.mensaje_avance_promo);
                             TextView textView_expiracion = (TextView) findViewById(R.id.fecha_venciomiento_codigo);
                             RelativeLayout layout_codigo = (RelativeLayout) findViewById(R.id.layout_meta);
                             ImageButton generarCodigo = (ImageButton)findViewById(R.id.boton_genarar_codigo);
+                            ImageView imageView = (ImageView) findViewById(R.id.image_promo);
+
+                            if(imagen.equals("postre.png")){
+                                imageView.setImageResource(R.drawable.postre);
+                            }
+                            else if(imagen.equals("cafe.png")){
+                                imageView.setImageResource(R.drawable.cafe);
+                            }
+                            else if(imagen.equals("almuerzo.png")){
+                                imageView.setImageResource(R.drawable.almuerzo);
+                            }
 
                             if (generar_codigo.equals("true")){
                                 layout_codigo.setVisibility(View.VISIBLE);

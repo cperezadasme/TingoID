@@ -105,6 +105,8 @@ public class MainActivity extends AppCompatActivity
         }
         else {
             usuario = SessionPrefs.get(this).getPrefsEmail();
+
+            id_usuario = SessionPrefs.get(this).getPrefsId();
             user_email.setText(usuario);
         }
 
@@ -454,6 +456,8 @@ public class MainActivity extends AppCompatActivity
                 timer.cancel();
             }
 
+
+
             //Buscar promociones
             Call <ResponseBody> existentesCall = mTingoApi.promocionesExistentes(new EntradasBody(usuario));
             existentesCall.enqueue(new Callback<ResponseBody>() {
@@ -468,6 +472,18 @@ public class MainActivity extends AppCompatActivity
                 }
             });
 
+            Call <ResponseBody> avanceCall = mTingoApi.generarAvance(new EntradasBody(usuario));
+            avanceCall.enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
+                }
+
+                @Override
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+                }
+            });
 
             Call <ResponseBody> promocionesCall = mTingoApi.mostrarPromociones(new EntradasBody(usuario));
             promocionesCall.enqueue(new Callback<ResponseBody>() {
@@ -510,18 +526,7 @@ public class MainActivity extends AppCompatActivity
             });
 
 
-            Call <ResponseBody> avanceCall = mTingoApi.generarAvance(new EntradasBody(usuario));
-            avanceCall.enqueue(new Callback<ResponseBody>() {
-                @Override
-                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
 
-                }
-
-                @Override
-                public void onFailure(Call<ResponseBody> call, Throwable t) {
-
-                }
-            });
 
             fragment = new PromocionesFragment();
             fragmento_seleccionado = true;

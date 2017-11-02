@@ -9,6 +9,9 @@ import com.example.constanza.tingoidapp.api.model.User;
 public class SessionPrefs {
 
     public static String PREFS_EMAIL = "PREFS_EMAIL";
+    public static String PREFS_ID = "PREFS_ID";
+
+
     //public static final String PREFS_NAME = "PREFS_NAME";
     //public static final String PREFS_TOKEN = "PREFS_TOKEN";
 
@@ -62,4 +65,9 @@ public class SessionPrefs {
     public String getPrefsEmail() {
         return mPrefs.getString(PREFS_EMAIL,"");
     }
+
+    public String getPrefsId() {
+        return mPrefs.getString(PREFS_ID,"");
+    }
+
 }

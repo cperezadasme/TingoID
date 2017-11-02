@@ -232,7 +232,8 @@ public class SignUpActivity extends AppCompatActivity {
                             String usuario_almacenado = response_json.getString("almacenado");
                             if (usuario_almacenado.equals("true")){
                                 Toast.makeText(getApplicationContext(), (String) response_json.get("mensaje"), Toast.LENGTH_LONG).show();
-                                SessionPrefs.get(SignUpActivity.this).saveUser(new User(email));
+                                String id_usuario = response_json.getString("id_usuario");
+                                SessionPrefs.get(SignUpActivity.this).saveUser(new User(email,id_usuario));
                                 showTutorialScreen();
                             }
                             else {
