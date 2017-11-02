@@ -63,7 +63,7 @@ public class UtilizadasAdapter extends ArrayAdapter {
             empresa.setText(item.getEmpresa());
             tipo.setText(item.getDetalle());
 
-            if ((item.getFecha_utilizacion()).equalsIgnoreCase("12 Dec. 2050")) {
+            if ((item.getFecha_utilizacion()).equals("12 Dec. 2050")) {
                 uso.setText("Expiró el ");
                 fecha_uso.setText(item.getFecha_expiracion());
             } else {

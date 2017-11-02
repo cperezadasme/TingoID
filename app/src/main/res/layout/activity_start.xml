@@ -7,22 +7,31 @@
     android:background="@color/celesteTid"
     tools:context="com.example.constanza.tingoidapp.StartActivity">
 
-    <ImageView
-        android:id="@+id/izq"
-        android:layout_width="118dp"
-        android:layout_height="120dp"
-        android:src="@drawable/izq"
-        android:layout_alignTop="@+id/der"
-        android:layout_toStartOf="@+id/der" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true">
 
-    <ImageView
-        android:id="@+id/der"
-        android:layout_width="134dp"
-        android:layout_height="120dp"
-        android:src="@drawable/der"
-        android:layout_centerVertical="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="55dp" />
+        <ImageView
+            android:id="@+id/izq"
+            android:layout_width="118dp"
+            android:layout_height="120dp"
+            android:src="@drawable/izq"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/der" />
+
+        <ImageView
+            android:id="@+id/der"
+            android:layout_width="134dp"
+            android:layout_height="120dp"
+            android:src="@drawable/der"
+            android:layout_marginEnd="57dp"
+            android:layout_alignTop="@+id/izq"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+
+
 
 
 </RelativeLayout>

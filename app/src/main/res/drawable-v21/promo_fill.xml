@@ -5,7 +5,7 @@
         android:width="2dp"
         android:height="12dp">
         <shape >
-            <solid android:color="@color/celesteTid" />
+            <solid android:color="@color/naranjaTid" />
         </shape>
     </item>
 
@@ -14,7 +14,7 @@
         android:height="10dp"
         android:top="1dp">
         <shape >
-            <solid android:color="@color/naranjaTid" />
+            <solid android:color="@color/celesteTid" />
         </shape>
     </item>
     <item
@@ -22,7 +22,7 @@
         android:height="8dp"
         android:top="2dp">
         <shape >
-            <solid android:color="@color/celesteTid" />
+            <solid android:color="@color/naranjaTid" />
         </shape>
     </item>
 

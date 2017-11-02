@@ -32,6 +32,7 @@ public class GenerarCodigoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_generar_codigo);
+        setTitle("Código Promoción");
 
         final String descripcion, id_avance,fecha;
         Intent intent = getIntent();

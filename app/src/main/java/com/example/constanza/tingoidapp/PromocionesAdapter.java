@@ -19,8 +19,8 @@ import com.example.constanza.tingoidapp.api.model.Tinket;
 import java.util.ArrayList;
 
 public class PromocionesAdapter extends ArrayAdapter {
-    private LinearLayout Barra_layout;
-    private ImageView[] barra;
+    //private LinearLayout Barra_layout;
+    //private ImageView[] barra;
 
     public PromocionesAdapter (@NonNull Context context, @LayoutRes int resource, @NonNull ArrayList<?> objects) {
         super(context, resource, objects);
@@ -77,6 +77,7 @@ public class PromocionesAdapter extends ArrayAdapter {
         TextView nombre_promo = (TextView) convertView.findViewById(R.id.nombre_promo);
         TextView avance_promo = (TextView) convertView.findViewById(R.id.avance_promo);
         TextView fecha_expiracion = (TextView) convertView.findViewById(R.id.fecha_exp_promo);
+        LinearLayout barra_progreso = (LinearLayout) convertView.findViewById(R.id.progreso);
         //create_Barra(Integer.valueOf(promocion.getAvance()),Integer.valueOf(promocion.getMeta()));
 
 
@@ -86,32 +87,58 @@ public class PromocionesAdapter extends ArrayAdapter {
             nombre_promo.setText(promocion.getDescripcion());
             avance_promo.setText(promocion.getAvance()+"/"+promocion.getMeta());
             fecha_expiracion.setText(promocion.getFecha_expiracion());
-            //create_Barra(2,3);
+            create_Barra(barra_progreso,Integer.valueOf(promocion.getAvance()),Integer.valueOf(promocion.getMeta()));
         }
 
         return convertView;
     }
 
-    /*private void create_Barra(int actual, int meta) {
-        if(Barra_layout!=null)
-            Barra_layout.removeAllViews();
+    private void create_Barra(LinearLayout layout, int actual, int meta) {
 
-        barra = new ImageView[100];
+        if(layout!=null)
+            layout.removeAllViews();
 
-        for (int i = 0; i < 100; i++){
-            barra[i] = new ImageView(getContext().getApplicationContext());
-            if (i <= (actual/meta)*100){
-                barra[i].setImageDrawable(ContextCompat.getDrawable(getContext().getApplicationContext(),R.drawable.promo_avance));
+        ImageView[] barra = new ImageView[102];
+        if (actual<meta) {
+            for (int i = 0; i < 102; i++) {
+
+                barra[i] = new ImageView(getContext().getApplicationContext());
+                if (i == 0) {
+                    barra[i].setImageDrawable(ContextCompat.getDrawable(getContext().getApplicationContext(), R.drawable.promo_inicio));
+                } else if (i == 101) {
+                    barra[i].setImageDrawable(ContextCompat.getDrawable(getContext().getApplicationContext(), R.drawable.promo_final));
+                } else if (i <= (actual * 100 / meta)) {
+                    barra[i].setImageDrawable(ContextCompat.getDrawable(getContext().getApplicationContext(), R.drawable.promo_avance));
+                } else {
+                    barra[i].setImageDrawable(ContextCompat.getDrawable(getContext().getApplicationContext(), R.drawable.promo_restante));
+                }
+                //barra[i].setImageDrawable(ContextCompat.getDrawable(getContext().getApplicationContext(),R.drawable.promo_avance));
+
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                params.setMargins(0, 0, 0, 0);
+
+                layout.addView(barra[i], params);
             }
-            else {
-                barra[i].setImageDrawable(ContextCompat.getDrawable(getContext().getApplicationContext(),R.drawable.promo_restante));
-            }
-
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-            params.setMargins(0,0,0,0);
-
-            Barra_layout.addView(barra[i],params);
         }
-    }*/
+        else {
+            for (int i = 0; i < 102; i++) {
+
+                barra[i] = new ImageView(getContext().getApplicationContext());
+                if (i == 0) {
+                    barra[i].setImageDrawable(ContextCompat.getDrawable(getContext().getApplicationContext(), R.drawable.promo_inicio_fill));
+                } else if (i == 101) {
+                    barra[i].setImageDrawable(ContextCompat.getDrawable(getContext().getApplicationContext(), R.drawable.promo_final_fill));
+                } else {
+                    barra[i].setImageDrawable(ContextCompat.getDrawable(getContext().getApplicationContext(), R.drawable.promo_fill));
+                }
+                //barra[i].setImageDrawable(ContextCompat.getDrawable(getContext().getApplicationContext(),R.drawable.promo_avance));
+
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                params.setMargins(0, 0, 0, 0);
+
+                layout.addView(barra[i], params);
+            }
+        }
+    }
 
 }
