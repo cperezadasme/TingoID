@@ -114,6 +114,7 @@ public class TingoQRFragment extends Fragment {
 
                 Fragment fragment = new HomeFragment();
                 getFragmentManager().beginTransaction().replace(R.id.contenedor,fragment).commit();
+
             }
 
 

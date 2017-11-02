@@ -1,5 +1,6 @@
 package com.example.constanza.tingoidapp;
 
+import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -11,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -79,6 +81,7 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_home, container, false);
+
         return rootView;
     }
 
@@ -137,6 +140,16 @@ public class HomeFragment extends Fragment {
         else {
             tinkets_por_exp.setText("No tienes tinkets por expirar");
         }
+
+        Button boton = (Button) rootView.findViewById(R.id.boton_qr_atajo);
+        boton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment fragment = new TingoQRFragment();
+                getFragmentManager().beginTransaction().replace(R.id.contenedor,fragment).commit();
+
+            }
+        });
     }
 
     // TODO: Rename method, update argument and hook method into UI event

@@ -58,6 +58,9 @@ public class MainActivity extends AppCompatActivity
     private TingoApi mTingoApi;
     private Retrofit mRestAdapter;
 
+    private String id_tinket;
+    private String mensaje;
+
     public static String usuario;
     public static String id_usuario;
 
@@ -529,13 +532,12 @@ public class MainActivity extends AppCompatActivity
             }
             IntentIntegrator integrator = new IntentIntegrator(MainActivity.this);
             integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
-            integrator.setPrompt("Scan");
+            integrator.setPrompt("Almacenar Tinket");
             integrator.setCameraId(0);
             integrator.setBeepEnabled(false);
             integrator.setBarcodeImageEnabled(false);
             integrator.initiateScan();
-            fragment = new Fragment();
-            fragmento_seleccionado = true;
+
         }
 
         else if(id==R.id.nav_cerrar_sesion){
@@ -549,6 +551,8 @@ public class MainActivity extends AppCompatActivity
         }
 
         else if (id == R.id.nav_inicio){
+            getSupportActionBar().setTitle("Inicio");
+
             if (timer != null){
                 timer.cancel();
             }
@@ -605,11 +609,18 @@ public class MainActivity extends AppCompatActivity
                                 }
                                 JSONObject response_json = new JSONObject(json);
                                 String almacenar = response_json.getString("almacenar");
-                                if (almacenar.equals("True")){
+                                if (almacenar.equals("true")){
                                     Toast.makeText(getApplicationContext(), (String) response_json.get("mensaje"), Toast.LENGTH_LONG).show();
+                                    id_tinket = response_json.getString("id_tinket");
+                                    System.out.println("antes del intent");
+                                    Intent intent = new Intent(getApplicationContext(), DetalleActivity.class);
+                                    intent.putExtra("id_tinket", id_tinket);
+                                    startActivity(intent);
+                                    System.out.println("despues del intent");
                                 }
                                 else {
                                     Toast.makeText(getApplicationContext(), (String) response_json.get("mensaje"), Toast.LENGTH_LONG).show();
+                                    getSupportFragmentManager().beginTransaction().replace(R.id.contenedor,new HomeFragment());
                                 }
                             }
                         } catch (JSONException e) {
