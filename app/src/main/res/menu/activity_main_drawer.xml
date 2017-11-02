@@ -4,9 +4,14 @@
     <group android:checkableBehavior="single">
 
         <item
+            android:id="@+id/nav_inicio"
+            android:title="Inicio"
+            />
+
+        <item
             android:id="@+id/nav_mi_tingo_id"
             android:icon="@drawable/ic_menu_camera"
-            android:title="Mi Tingo id" />
+            android:title="Mostrar QR" />
 
         <item
             android:id="@+id/nav_almacenar_compra"
@@ -24,6 +29,11 @@
             android:id="@+id/nav_promociones"
             android:icon="@drawable/ic_menu_manage"
             android:title="Promociones" />
+        <item
+            android:id="@+id/nav_cerrar_sesion"
+            android:title="Cerrar Sesión"
+            />
+
     </group>
 
 </menu>
