@@ -10,7 +10,6 @@
     <android.support.v7.widget.Toolbar
         app:theme="@style/ThemeOverlay.AppCompat.Dark"
         android:id="@+id/my_toolbar"
-        app:subtitleTextColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:background="@color/oscuroTid"

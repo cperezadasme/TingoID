@@ -14,12 +14,10 @@
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/my_toolbar"
-        app:titleTextColor="@color/white"
-        app:subtitleTextColor="@color/white"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/oscuroTid"
-        app:popupTheme="@style/ThemeOverlay.AppCompat"/>
+        android:background="@color/oscuroTid"/>
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -47,9 +45,11 @@
 
             <TextView
                 android:id="@+id/detalle_empresa"
-                android:textSize="20sp"
+                android:textSize="28sp"
                 android:textColor="@color/black"
                 android:layout_width="match_parent"
+                android:text="Empresa"
+                android:gravity="center"
                 android:textStyle="bold"
                 android:layout_height="wrap_content" />
         </LinearLayout>
@@ -63,8 +63,9 @@
 
             <TextView
                 android:id="@+id/detalle_descripcion"
+                android:layout_gravity="center"
                 android:textSize="20sp"
-                android:textColor="@color/black"
+                android:textColor="@color/gray_deep"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="italic"/>
@@ -79,14 +80,9 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:text="Tienes un "
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
                 android:id="@+id/detalle_tipo"
+                android:text="Tipo"
+                android:textStyle="italic"
                 android:textSize="20sp"
                 android:textColor="@color/black"
                 android:layout_width="wrap_content"
