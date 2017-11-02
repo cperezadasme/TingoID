@@ -5,7 +5,7 @@
         android:width="6dp"
         android:height="12dp">
         <shape >
-            <solid android:color="@color/celesteTid" />
+            <solid android:color="@color/oscuroTid" />
             <corners android:topLeftRadius="6dp" android:bottomLeftRadius="6dp" />
         </shape>
     </item>
@@ -26,7 +26,7 @@
         android:top="2dp"
         android:left="2dp">
         <shape >
-            <solid android:color="@color/celesteTid" />
+            <solid android:color="@color/cremaTid" />
             <corners android:topLeftRadius="4dp" android:bottomLeftRadius="4dp" />
         </shape>
     </item>
