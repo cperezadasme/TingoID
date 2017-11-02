@@ -10,9 +10,9 @@
     >
 
     <ImageView
-        android:layout_width="200dp"
-        android:layout_height="80dp"
-        android:src="@drawable/promo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/promociones"
         android:scaleType="centerCrop"
         android:id="@+id/img5"
         android:layout_marginTop="170dp"
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:text="@string/slide_5_titulo"
         android:textColor="@color/oscuroTid"
-        android:textSize="48sp"
+        android:textSize="40sp"
         android:textStyle="bold"
         android:gravity="center_horizontal"
         android:id="@+id/titulo5"

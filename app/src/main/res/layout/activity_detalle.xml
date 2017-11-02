@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
@@ -9,119 +9,77 @@
     android:paddingLeft="0dp"
     android:paddingRight="0dp"
     android:paddingTop="0dp"
-    tools:context="com.example.constanza.tingoidapp.DetalleActivity">
+    tools:context="com.example.constanza.tingoidapp.DetalleActivity"
+    android:background="@drawable/bg">
 
     <android.support.v7.widget.Toolbar
-        app:theme="@style/ThemeOverlay.AppCompat.Dark"
         android:id="@+id/my_toolbar"
+        app:titleTextColor="@color/white"
         app:subtitleTextColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/oscuroTid"
         app:popupTheme="@style/ThemeOverlay.AppCompat"/>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingLeft="16dp"
+        android:paddingLeft="55dp"
         android:paddingRight="16dp"
-        android:paddingTop="16dp">
-        <LinearLayout
-            android:orientation="horizontal"
-            android:paddingBottom="16dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        android:paddingTop="65dp"
+        android:layout_marginTop="55dp"
+        android:background="@drawable/fondoticket">
 
-            <TextView
-                android:text="Empresa: "
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+        <ImageView
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:id="@+id/empresa_detalle_imagen"
+            app:srcCompat="@drawable/empresa1"
+            android:layout_centerHorizontal="true" />
+
+        <LinearLayout
+            android:paddingTop="140dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true">
 
             <TextView
                 android:id="@+id/detalle_empresa"
                 android:textSize="20sp"
                 android:textColor="@color/black"
                 android:layout_width="match_parent"
+                android:textStyle="bold"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
             android:orientation="horizontal"
             android:paddingBottom="16dp"
+            android:paddingTop="280dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
-                android:text="Fecha de emisión: "
+                android:id="@+id/detalle_descripcion"
                 android:textSize="20sp"
                 android:textColor="@color/black"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:id="@+id/detalle_emision"
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
+                android:layout_height="wrap_content"
+                android:textStyle="italic"/>
         </LinearLayout>
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:paddingBottom="16dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:text="Fecha de expiración: "
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:id="@+id/detalle_expiracion"
-                android:textSize="20sp"
-                android:textColor="@color/black"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-        <!--
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:text="Fecha de emisión: "
-                android:textSize="20dp"
-                android:textColor="@color/black"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:id="@+id/detalle_valido"
-                android:textSize="20dp"
-                android:textColor="@color/black"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-        -->
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:paddingBottom="16dp"
+            android:paddingTop="220dp"
             android:layout_height="wrap_content">
 
             <TextView
-                android:text="Categoria: "
+                android:text="Tienes un "
                 android:textSize="20sp"
                 android:textColor="@color/black"
                 android:layout_width="wrap_content"
@@ -131,33 +89,60 @@
                 android:id="@+id/detalle_tipo"
                 android:textSize="20sp"
                 android:textColor="@color/black"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
         </LinearLayout>
 
+
         <LinearLayout
             android:orientation="horizontal"
-            android:paddingBottom="16dp"
+            android:paddingTop="250dp"
             android:layout_width="match_parent"
+            android:paddingBottom="20sp"
             android:layout_height="wrap_content">
 
             <TextView
-                android:text="Valor: "
+                android:text="Expira el  "
                 android:textSize="20sp"
                 android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <TextView
-                android:id="@+id/detalle_valor"
+                android:id="@+id/detalle_expiracion"
                 android:textSize="20sp"
                 android:textColor="@color/black"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
-    </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:paddingBottom="16dp"
+            android:paddingTop="340dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true">
+
+            <TextView
+                android:text="Valor: "
+                android:textSize="30sp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/detalle_valor"
+                android:textSize="30sp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+    </RelativeLayout>
 
 
-</LinearLayout>
+</RelativeLayout>
+

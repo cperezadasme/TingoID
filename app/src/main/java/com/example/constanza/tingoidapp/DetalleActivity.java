@@ -68,14 +68,14 @@ public class DetalleActivity extends AppCompatActivity {
                             String tipo = response_json.getString("tipo");
                             String valor = response_json.getString("valor");
 
-                            TextView textView_emision = (TextView) findViewById(R.id.detalle_emision);
+                            //TextView textView_emision = (TextView) findViewById(R.id.detalle_emision);
                             //TextView textView_utilizacion = (TextView) findViewById(R.id.detalle_utilizacion);
                             TextView textView_empresa = (TextView) findViewById(R.id.detalle_empresa);
                             TextView textView_expiracion = (TextView) findViewById(R.id.detalle_expiracion);
                             TextView textView_tipo = (TextView) findViewById(R.id.detalle_tipo);
                             TextView textView_valor = (TextView) findViewById(R.id.detalle_valor);
 
-                            textView_emision.setText(fecha_emision);
+                            //textView_emision.setText(fecha_emision);
                             textView_empresa.setText(empresa);
                             textView_expiracion.setText(fecha_expiracion);
                             textView_tipo.setText(tipo);
