@@ -5,32 +5,35 @@
 
         <item
             android:id="@+id/nav_inicio"
+            android:icon="@drawable/inicioicon"
             android:title="Inicio"
             />
 
         <item
             android:id="@+id/nav_mi_tingo_id"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/qr"
             android:title="Mostrar QR" />
 
         <item
             android:id="@+id/nav_almacenar_compra"
+            android:icon="@drawable/ic_menu_camera"
             android:title="Almacenar compra"
             />
         <item
             android:id="@+id/nav_tinkets_disponibles"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/tinckets_disponibles"
             android:title="Tinkets Disponibles" />
         <item
             android:id="@+id/nav_tinkets_utilizados"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/tinckets_utilizados"
             android:title="Tinkets Utilizados" />
         <item
             android:id="@+id/nav_promociones"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/promociones"
             android:title="Promociones" />
         <item
             android:id="@+id/nav_cerrar_sesion"
+            android:icon="@drawable/cerrar_sesion"
             android:title="Cerrar Sesión"
             />
 

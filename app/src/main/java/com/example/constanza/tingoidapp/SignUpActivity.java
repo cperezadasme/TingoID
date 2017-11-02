@@ -134,7 +134,7 @@ public class SignUpActivity extends AppCompatActivity {
         mFloatApellido.setError(null);
 
         //Store values
-        String email = mEmail.getText().toString();
+        final String email = mEmail.getText().toString();
         final String name = mName.getText().toString();
         String password = mPassword.getText().toString();
         String confirmPass = mConfirmPass.getText().toString();
@@ -232,6 +232,7 @@ public class SignUpActivity extends AppCompatActivity {
                             String usuario_almacenado = response_json.getString("almacenado");
                             if (usuario_almacenado.equals("true")){
                                 Toast.makeText(getApplicationContext(), (String) response_json.get("mensaje"), Toast.LENGTH_LONG).show();
+                                SessionPrefs.get(SignUpActivity.this).saveUser(new User(email));
                                 showTutorialScreen();
                             }
                             else {
@@ -297,7 +298,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void showTutorialScreen(){
         startActivity(new Intent(this, TutorialActivity.class));
-        //finish();
+        finish();
     }
 
 

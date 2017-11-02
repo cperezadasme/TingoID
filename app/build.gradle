@@ -27,11 +27,13 @@ dependencies {
 
     })
     //dependencias para gif
-    
 
     //dependencias para el scanner QR
 
     //compile 'com.google.android.gms:play-services:11.0.2'
+    //imagen redonda
+    compile 'de.hdodenhof:circleimageview:2.2.0'
+
     compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.8'
     compile 'com.android.support:multidex:1.0.1'
     compile 'com.android.support:appcompat-v7:25.3.1'

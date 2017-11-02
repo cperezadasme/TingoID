@@ -1,19 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg"
-    android:id="@+id/contenedor"
-    android:screenOrientation = "portrait"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.constanza.tingoidapp.MainActivity"
-    tools:showIn="@layout/app_bar_main">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.example.constanza.tingoidapp.HomeFragment">
 
+    <!-- TODO: Update blank fragment layout -->
     <LinearLayout
-        android:id="@+id/layout_main"
-
+        android:background="@drawable/bg"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -49,7 +44,7 @@
         </RelativeLayout>
 
         <TextView
-            android:id="@+id/tinkets_por_expirar_main"
+            android:id="@+id/tinkets_por_expirar"
             android:background="@color/background_light"
             android:text="Tinkets por expirar:"
             android:layout_marginTop="50sp"
@@ -60,7 +55,20 @@
             android:textColor="@color/black"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-    </LinearLayout>
 
+        <ListView
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:divider="@null"
+            android:dividerHeight="10dp"
+            android:id="@android:id/list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingRight="16dp"
+            android:paddingLeft="16dp"
+            android:textColor="@color/white">
+
+        </ListView>
+
+    </LinearLayout>
 
 </FrameLayout>

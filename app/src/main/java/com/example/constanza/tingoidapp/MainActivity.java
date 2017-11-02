@@ -1,6 +1,7 @@
 package com.example.constanza.tingoidapp;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v4.app.Fragment;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,6 +14,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,10 +43,12 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static java.security.AccessController.getContext;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, EntradasFragment.OnFragmentInteractionListener,
                 UtilizadasFragment.OnFragmentInteractionListener, TingoQRFragment.OnFragmentInteractionListener,
-                PromocionesFragment.OnFragmentInteractionListener{
+                PromocionesFragment.OnFragmentInteractionListener, HomeFragment.OnFragmentInteractionListener{
 
     public static ArrayList<Tinket> lista_tinkets;
     public static ArrayList<Tinket> lista_utilizados;
@@ -99,6 +104,11 @@ public class MainActivity extends AppCompatActivity
             user_email.setText(usuario);
         }
 
+        TextView tinkets_por_exp =(TextView) findViewById(R.id.tinkets_por_expirar_main);
+        String font_path = "fonts/ThrowMyHandsUpintheAirBold.ttf";
+        Typeface TF = Typeface.createFromAsset(this.getAssets(),font_path) ;
+        tinkets_por_exp.setTypeface(TF);
+
         mRestAdapter = new Retrofit.Builder()
                 .baseUrl(TingoApi.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -138,6 +148,11 @@ public class MainActivity extends AppCompatActivity
                             lista_tinkets.add(tinket);
 
                         }
+                        //set fragment incial
+                        getSupportFragmentManager().beginTransaction().add(R.id.contenedor, new HomeFragment()).commit();
+                        LinearLayout linear = (LinearLayout) findViewById(R.id.layout_main);
+                        linear.setVisibility(View.GONE);
+
 
                     }
                 } catch (IOException | JSONException e) {
@@ -150,6 +165,8 @@ public class MainActivity extends AppCompatActivity
 
             }
         });
+
+
 
         //busca entradas utilizadas CAMBIAR POR USUARIO
         Call<ResponseBody> utilizadasCall = mTingoApi.entradasUtilizadas(new EntradasBody(usuario));
@@ -265,6 +282,8 @@ public class MainActivity extends AppCompatActivity
 
 
 
+
+
     }
 
     @Override
@@ -360,6 +379,9 @@ public class MainActivity extends AppCompatActivity
 
         else if (id == R.id.nav_inicio){
             //volver al main
+            fragment = new HomeFragment();
+            fragmento_seleccionado = true;
+
         }
 
         if (fragmento_seleccionado){

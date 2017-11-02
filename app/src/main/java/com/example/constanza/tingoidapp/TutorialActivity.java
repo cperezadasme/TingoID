@@ -103,7 +103,7 @@ public class TutorialActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void loadHome(){
-        startActivity(new Intent(this,LoginActivity.class));
+        startActivity(new Intent(this,MainActivity.class));
         finish();
     }
 
