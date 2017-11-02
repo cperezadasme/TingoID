@@ -43,6 +43,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static com.example.constanza.tingoidapp.TingoQRFragment.timer;
 import static java.security.AccessController.getContext;
 
 public class MainActivity extends AppCompatActivity
@@ -279,11 +280,6 @@ public class MainActivity extends AppCompatActivity
 
             }
         });
-
-
-
-
-
     }
 
     @Override
@@ -343,22 +339,194 @@ public class MainActivity extends AppCompatActivity
                 }
             });
 
+            if (timer != null){
+                timer.cancel();
+            }
             fragment = new TingoQRFragment();
             fragmento_seleccionado = true;
         } else if (id == R.id.nav_tinkets_disponibles) {
+            if (timer != null){
+                timer.cancel();
+            }
+
+            //busca entradas disponibles CAMBIAR POR USUARIO
+            Call<ResponseBody> entradasCall = mTingoApi.entradasDisponibles(new EntradasBody(usuario));
+            entradasCall.enqueue(new Callback<ResponseBody>() {
+
+                String json;
+
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
+                    try {
+                        if (response.isSuccessful()) {
+                            lista_tinkets = new ArrayList<>();
+                            json = response.body().string();
+
+                            JSONArray jsonArray = new JSONArray(json);
+
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                JSONObject jsonElement = jsonArray.getJSONObject(i);
+
+                                String id = jsonElement.getString("id");
+                                String fecha_emision = jsonElement.getString("fecha_emision");
+                                String fecha_utilizacion = jsonElement.getString("fecha_utilizacion");
+                                String fecha_expiracion = jsonElement.getString("fecha_expiracion");
+                                String valido = jsonElement.getString("valido");
+                                String empresa = jsonElement.getString("empresa");
+                                String detalle = jsonElement.getString("tipo");
+
+                                Tinket tinket = new Tinket(id, fecha_emision, fecha_utilizacion, fecha_expiracion, valido, empresa, detalle);
+
+                                lista_tinkets.add(tinket);
+
+                            }
+
+                        }
+                    } catch (IOException | JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+                }
+            });
+
             fragment = new EntradasFragment();
             fragmento_seleccionado = true;
 
         } else if (id == R.id.nav_tinkets_utilizados) {
+            if (timer != null){
+                timer.cancel();
+            }
+            //busca entradas utilizadas CAMBIAR POR USUARIO
+            Call<ResponseBody> utilizadasCall = mTingoApi.entradasUtilizadas(new EntradasBody(usuario));
+            utilizadasCall.enqueue(new Callback<ResponseBody>() {
+                String json;
+
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
+                    try {
+                        if (response.isSuccessful()) {
+                            lista_utilizados = new ArrayList<>();
+                            json = response.body().string();
+
+                            JSONArray jsonArray = new JSONArray(json);
+
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                JSONObject jsonElement = jsonArray.getJSONObject(i);
+
+                                String id = jsonElement.getString("id");
+                                String fecha_emision = jsonElement.getString("fecha_emision");
+                                String fecha_utilizacion = jsonElement.getString("fecha_utilizacion");
+                                String fecha_expiracion = jsonElement.getString("fecha_expiracion");
+                                String valido = jsonElement.getString("valido");
+                                String empresa = jsonElement.getString("empresa");
+                                String detalle = jsonElement.getString("tipo");
+
+                                Tinket tinket = new Tinket(id, fecha_emision, fecha_utilizacion, fecha_expiracion, valido, empresa, detalle);
+
+                                lista_utilizados.add(tinket);
+                                System.out.print(tinket);
+                            }
+                        }
+                    } catch (IOException | JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+                }
+            });
+
             fragment = new UtilizadasFragment();
             fragmento_seleccionado = true;
         } else if (id == R.id.nav_promociones) {
+            if (timer != null){
+                timer.cancel();
+            }
+
+            //Buscar promociones
+            Call <ResponseBody> existentesCall = mTingoApi.promocionesExistentes(new EntradasBody(usuario));
+            existentesCall.enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
+                }
+
+                @Override
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+                }
+            });
+
+
+            Call <ResponseBody> promocionesCall = mTingoApi.mostrarPromociones(new EntradasBody(usuario));
+            promocionesCall.enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    String json;
+                    try {
+                        if (response.isSuccessful()) {
+                            lista_promociones = new ArrayList<>();
+                            json = response.body().string();
+
+                            JSONArray jsonArray = new JSONArray(json);
+
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                JSONObject jsonElement = jsonArray.getJSONObject(i);
+
+                                String id_avance = jsonElement.getString("id_avance");
+                                String id_promo = jsonElement.getString("id_promocion");
+                                String descripcion = jsonElement.getString("descripcion");
+                                String fecha_expiracion = jsonElement.getString("fecha_expiracion");
+                                String empresa = jsonElement.getString("empresa");
+                                String avance = jsonElement.getString("avance");
+                                String meta = jsonElement.getString("meta");
+
+                                Promocion promocion = new Promocion(id_avance,id_promo,descripcion,fecha_expiracion,empresa,
+                                        avance,meta);
+
+                                lista_promociones.add(promocion);
+                            }
+                        }
+                    } catch (IOException | JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+                }
+            });
+
+
+            Call <ResponseBody> avanceCall = mTingoApi.generarAvance(new EntradasBody(usuario));
+            avanceCall.enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
+                }
+
+                @Override
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+                }
+            });
 
             fragment = new PromocionesFragment();
             fragmento_seleccionado = true;
 
         } else if (id == R.id.nav_almacenar_compra) {
-
+            if (timer != null){
+                timer.cancel();
+            }
             IntentIntegrator integrator = new IntentIntegrator(MainActivity.this);
             integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
             integrator.setPrompt("Scan");
@@ -371,6 +539,9 @@ public class MainActivity extends AppCompatActivity
         }
 
         else if(id==R.id.nav_cerrar_sesion){
+            if (timer != null){
+                timer.cancel();
+            }
             SessionPrefs.get(this).logOut();
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(intent);
@@ -378,6 +549,9 @@ public class MainActivity extends AppCompatActivity
         }
 
         else if (id == R.id.nav_inicio){
+            if (timer != null){
+                timer.cancel();
+            }
             //volver al main
             fragment = new HomeFragment();
             fragmento_seleccionado = true;

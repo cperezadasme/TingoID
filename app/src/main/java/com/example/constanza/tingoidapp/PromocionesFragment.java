@@ -83,6 +83,8 @@ public class PromocionesFragment extends ListFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+
+
         casino =(TextView)rootView.findViewById(R.id.casino_tv);
         String font_path = "fonts/ThrowMyHandsUpintheAirBold.ttf";
         Typeface TF = Typeface.createFromAsset(getContext().getAssets(),font_path) ;

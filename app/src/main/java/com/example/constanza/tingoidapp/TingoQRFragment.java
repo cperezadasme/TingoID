@@ -37,6 +37,8 @@ public class TingoQRFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+    public static CountDownTimer timer;
+
     // TODO: Rename and change types of parameters
     ImageView imageView;
     public final static int QRcodeWidth = 500 ;
@@ -93,9 +95,8 @@ public class TingoQRFragment extends Fragment {
             e.printStackTrace();
         }
 
-
         //contador de cuenta regresiva 5 minutos, esta en milisegundos
-        new CountDownTimer(30000,1000) {
+        timer=new CountDownTimer(30000,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 long minutos = TimeUnit.MILLISECONDS.toMinutes( millisUntilFinished);
@@ -108,10 +109,17 @@ public class TingoQRFragment extends Fragment {
             @Override
             public void onFinish() {
                 //count_down.setText("FINISH!!");
-                Intent intent = new Intent(getActivity().getApplicationContext(), MainActivity.class);
-                startActivity(intent);
+                //Intent intent = new Intent(getActivity().getApplicationContext(), MainActivity.class);
+                //startActivity(intent);
+
+                Fragment fragment = new HomeFragment();
+                getFragmentManager().beginTransaction().replace(R.id.contenedor,fragment).commit();
             }
-        }.start();
+
+
+        };
+
+        timer.start();
 
 
         return rootView;
@@ -139,6 +147,16 @@ public class TingoQRFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
     }
 
     /**
