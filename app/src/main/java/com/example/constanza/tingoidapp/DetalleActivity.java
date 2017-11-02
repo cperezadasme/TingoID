@@ -1,6 +1,7 @@
 package com.example.constanza.tingoidapp;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -67,6 +68,7 @@ public class DetalleActivity extends AppCompatActivity {
                             String empresa = response_json.getString("empresa");
                             String tipo = response_json.getString("tipo");
                             String valor = response_json.getString("valor");
+                            String valido = response_json.getString("valido");
 
                             //TextView textView_emision = (TextView) findViewById(R.id.detalle_emision);
                             //TextView textView_utilizacion = (TextView) findViewById(R.id.detalle_utilizacion);
@@ -74,12 +76,15 @@ public class DetalleActivity extends AppCompatActivity {
                             TextView textView_expiracion = (TextView) findViewById(R.id.detalle_expiracion);
                             TextView textView_tipo = (TextView) findViewById(R.id.detalle_tipo);
                             TextView textView_valor = (TextView) findViewById(R.id.detalle_valor);
+                            TextView textView_valido = (TextView) findViewById(R.id.detalle_valido);
 
                             //textView_emision.setText(fecha_emision);
                             textView_empresa.setText(empresa);
                             textView_expiracion.setText(fecha_expiracion);
                             textView_tipo.setText(tipo);
                             textView_valor.setText(valor);
+                            textView_valido.setText(valido);
+
 
                             /*
                             if (fecha_utilizacion.equals("2050-12-12")){
