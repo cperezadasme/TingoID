@@ -22,6 +22,7 @@ import com.example.constanza.tingoidapp.api.model.EntradasBody;
 import com.example.constanza.tingoidapp.api.model.Promocion;
 import com.example.constanza.tingoidapp.api.model.Tinket;
 import com.example.constanza.tingoidapp.api.model.TinketBody;
+import com.example.constanza.tingoidapp.prefs.SessionPrefs;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -58,6 +59,15 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if(!SessionPrefs.get(this).isloggedIn()){
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -81,7 +91,13 @@ public class MainActivity extends AppCompatActivity
         id_usuario = getIntent().getStringExtra("id_usuario");
 
         //user_name.setText(usuario);
-        user_email.setText(usuario);
+        if (usuario!=null){
+            user_email.setText(usuario);
+        }
+        else {
+            usuario = SessionPrefs.get(this).getPrefsEmail();
+            user_email.setText(usuario);
+        }
 
         mRestAdapter = new Retrofit.Builder()
                 .baseUrl(TingoApi.BASE_URL)
@@ -247,6 +263,8 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+
+
     }
 
     @Override
@@ -331,8 +349,17 @@ public class MainActivity extends AppCompatActivity
             integrator.initiateScan();
             fragment = new Fragment();
             fragmento_seleccionado = true;
+        }
 
+        else if(id==R.id.nav_cerrar_sesion){
+            SessionPrefs.get(this).logOut();
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+        }
 
+        else if (id == R.id.nav_inicio){
+            //volver al main
         }
 
         if (fragmento_seleccionado){

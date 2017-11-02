@@ -2,13 +2,12 @@ package com.example.constanza.tingoidapp.api.model;
 
 public class User {
     private String email;
-    private String name;
-    private String token;
+    //private String name;
+    //private String token;
 
-    public User(String email, String name, String token) {
+    public User(String email) {
         this.email = email;
-        this.name = name;
-        this.token = token;
+
     }
 
     public String getEmail() {
@@ -19,19 +18,6 @@ public class User {
         this.email = email;
     }
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
 }

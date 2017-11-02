@@ -8,9 +8,9 @@ import com.example.constanza.tingoidapp.api.model.User;
 
 public class SessionPrefs {
 
-    public static final String PREFS_EMAIL = "PREFS_EMAIL";
-    public static final String PREFS_NAME = "PREFS_NAME";
-    public static final String PREFS_TOKEN = "PREFS_TOKEN";
+    public static String PREFS_EMAIL = "PREFS_EMAIL";
+    //public static final String PREFS_NAME = "PREFS_NAME";
+    //public static final String PREFS_TOKEN = "PREFS_TOKEN";
 
     private final SharedPreferences mPrefs;
     private boolean mIsloggedIn = false;
@@ -26,8 +26,10 @@ public class SessionPrefs {
 
     private SessionPrefs(Context context){
         mPrefs=context.getApplicationContext()
-                .getSharedPreferences(PREFS_NAME,context.MODE_PRIVATE);
-        mIsloggedIn = !TextUtils.isEmpty(mPrefs.getString(PREFS_TOKEN,null));
+                .getSharedPreferences(PREFS_EMAIL,context.MODE_PRIVATE);
+//        mIsloggedIn = !TextUtils.isEmpty(mPrefs.getString(PREFS_TOKEN,null));
+        mIsloggedIn = !TextUtils.isEmpty(mPrefs.getString(PREFS_EMAIL,null));
+
     }
 
     public boolean isloggedIn() {
@@ -37,10 +39,12 @@ public class SessionPrefs {
     public void saveUser(User user){
         if (user != null){
             SharedPreferences.Editor editor = mPrefs.edit();
-            editor.putString(PREFS_NAME,user.getName());
-            editor.putString(PREFS_TOKEN,user.getToken());
+            //editor.putString(PREFS_NAME,user.getName());
+            //editor.putString(PREFS_TOKEN,user.getToken());
             editor.putString(PREFS_EMAIL,user.getEmail());
-            editor.apply();
+            //editor.apply();
+            editor.commit();
+
             mIsloggedIn = true;
         }
     }
@@ -48,17 +52,14 @@ public class SessionPrefs {
     public void logOut(){
         mIsloggedIn = false;
         SharedPreferences.Editor editor = mPrefs.edit();
-        editor.putString(PREFS_NAME,null);
+        //editor.putString(PREFS_NAME,null);
         editor.putString(PREFS_EMAIL,null);
-        editor.putString(PREFS_TOKEN,null);
+        //editor.putString(PREFS_TOKEN,null);
         editor.apply();
+
     }
 
-    public static String getPrefsEmail() {
-        return PREFS_EMAIL;
-    }
-
-    public static String getPrefsName() {
-        return PREFS_NAME;
+    public String getPrefsEmail() {
+        return mPrefs.getString(PREFS_EMAIL,"");
     }
 }

@@ -247,10 +247,9 @@ public class LoginActivity extends AppCompatActivity {
                         return;
                     }
 
-                    SessionPrefs.get(LoginActivity.this).saveUser(response.body());
-
                     showMainScreen();
                     */
+                    SessionPrefs.get(LoginActivity.this).saveUser(new User(email));
 
                 }
 
@@ -297,12 +296,14 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
         mEmailView.setText(null);
         mPasswordView.setText(null);
+        finish();
     }
 
     private void showSignUpScreen(){
         Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
         intent.putExtra("csrf_token", csrf_token);
         startActivity(intent);
+        finish();
 
     }
 
