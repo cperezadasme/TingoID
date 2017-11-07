@@ -1,12 +1,15 @@
 package com.example.constanza.tingoidapp;
 
 import android.content.Intent;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -24,6 +27,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+
+import static java.security.AccessController.getContext;
 
 public class PromoDetalleActivity extends AppCompatActivity {
     private Retrofit mRestAdapter;
@@ -45,6 +50,8 @@ public class PromoDetalleActivity extends AppCompatActivity {
         String id_avance = intent.getStringExtra("id_avance");
         String id_promocion = intent.getStringExtra("id_promocion");
         String usuario = intent.getStringExtra("usuario");
+
+
 
         //conexion al servicio REST
         mRestAdapter = new Retrofit.Builder()
@@ -83,12 +90,14 @@ public class PromoDetalleActivity extends AppCompatActivity {
                             RelativeLayout layout_codigo = (RelativeLayout) findViewById(R.id.layout_meta);
                             ImageButton generarCodigo = (ImageButton)findViewById(R.id.boton_genarar_codigo);
                             ImageView imageView = (ImageView) findViewById(R.id.image_promo);
+                            // Barra de avance
+                            LinearLayout barra_progreso = (LinearLayout) findViewById(R.id.layout_avance_promo);
 
                             if(imagen.equals("postre.png")){
                                 imageView.setImageResource(R.drawable.postre);
                             }
-                            else if(imagen.equals("cafe.png")){
-                                imageView.setImageResource(R.drawable.cafe);
+                            else if(imagen.equals("jugo.png")){
+                                imageView.setImageResource(R.drawable.jugo);
                             }
                             else if(imagen.equals("almuerzo.png")){
                                 imageView.setImageResource(R.drawable.almuerzo);
@@ -96,15 +105,18 @@ public class PromoDetalleActivity extends AppCompatActivity {
 
                             if (generar_codigo.equals("true")){
                                 layout_codigo.setVisibility(View.VISIBLE);
+                                avance_meta.setVisibility(View.GONE);
                             }
 
                             else {
                                 layout_codigo.setVisibility(View.GONE);
+                                
                             }
 
                             textView_descripcion.setText(descripcion);
                             textView_expiracion.setText(fecha_expiracion);
-                            avance_meta.setText(avance+"/"+meta);
+                            avance_meta.setText(avance);
+                            //create_Barra(barra_progreso,Integer.valueOf(promocion.getAvance()),Integer.valueOf(promocion.getMeta()));
 
                             generarCodigo.setOnClickListener(new View.OnClickListener() {
                                 @Override
@@ -131,4 +143,50 @@ public class PromoDetalleActivity extends AppCompatActivity {
             }
         });
     }
+    /*
+    private void create_Barra(LinearLayout layout, int actual, int meta){
+        if(layout!=null)
+            layout.removeAllViews();
+
+        ImageView barra[] = new ImageView[102];
+        if (actual<meta) {
+            for (int i = 0; i < 102; i++) {
+                barra[i] = new ImageView(this);
+                if (i == 0) {
+                    barra[i].setImageDrawable(ContextCompat.getDrawable(this, R.drawable.promo_inicio));
+                } else if (i == 101) {
+                    barra[i].setImageDrawable(ContextCompat.getDrawable(this, R.drawable.promo_final));
+                } else if (i <= (actual * 100 / meta)) {
+                    barra[i].setImageDrawable(ContextCompat.getDrawable(this, R.drawable.promo_avance));
+                } else {
+                    barra[i].setImageDrawable(ContextCompat.getDrawable(this, R.drawable.promo_restante));
+                }
+                //barra[i].setImageDrawable(ContextCompat.getDrawable(getContext().getApplicationContext(),R.drawable.promo_avance));
+
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                params.setMargins(0, 0, 0, 0);
+
+                layout.addView(barra[i], params);
+            }
+        }
+        else {
+            for (int i = 0; i < 102; i++) {
+
+                barra[i] = new ImageView(this);
+                if (i == 0) {
+                    barra[i].setImageDrawable(ContextCompat.getDrawable(this, R.drawable.promo_inicio_fill));
+                } else if (i == 101) {
+                    barra[i].setImageDrawable(ContextCompat.getDrawable(this, R.drawable.promo_final_fill));
+                } else {
+                    barra[i].setImageDrawable(ContextCompat.getDrawable(this, R.drawable.promo_fill));
+                }
+                //barra[i].setImageDrawable(ContextCompat.getDrawable(getContext().getApplicationContext(),R.drawable.promo_avance));
+
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                params.setMargins(0, 0, 0, 0);
+
+                layout.addView(barra[i], params);
+            }
+        }
+    }*/
 }

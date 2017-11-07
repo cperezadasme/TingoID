@@ -107,8 +107,10 @@ public class PromocionesAdapter extends ArrayAdapter {
                     barra[i].setImageDrawable(ContextCompat.getDrawable(getContext().getApplicationContext(), R.drawable.promo_inicio));
                 } else if (i == 101) {
                     barra[i].setImageDrawable(ContextCompat.getDrawable(getContext().getApplicationContext(), R.drawable.promo_final));
-                } else if (i <= (actual * 100 / meta)) {
+                } else if (i < (actual * 100 / meta)) {
                     barra[i].setImageDrawable(ContextCompat.getDrawable(getContext().getApplicationContext(), R.drawable.promo_avance));
+                } else if (i == (actual * 100 / meta)) {
+                    barra[i].setImageDrawable(ContextCompat.getDrawable(getContext().getApplicationContext(), R.drawable.promo_tope));
                 } else {
                     barra[i].setImageDrawable(ContextCompat.getDrawable(getContext().getApplicationContext(), R.drawable.promo_restante));
                 }

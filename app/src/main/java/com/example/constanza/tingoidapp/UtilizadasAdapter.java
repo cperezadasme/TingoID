@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
@@ -62,12 +63,17 @@ public class UtilizadasAdapter extends ArrayAdapter {
             imagen.setImageResource(R.drawable.empresa1);
             empresa.setText(item.getEmpresa());
             tipo.setText(item.getDetalle());
+            LinearLayout bg = (LinearLayout)convertView.findViewById(R.id.bg_utilizada);
 
-            if ((item.getFecha_utilizacion()).equals("12 Dec. 2050")) {
+            if ((item.getValido()).equals("Expirado")) {
                 uso.setText("Expiró el ");
                 fecha_uso.setText(item.getFecha_expiracion());
+                bg.setBackgroundResource(R.drawable.ticketdettailexpired);
             } else {
+                // Lo cambia la primera vez, por eso debes setear tanto la ida como la vuelta
+                uso.setText("Ocupado el ");
                 fecha_uso.setText(item.getFecha_utilizacion());
+                bg.setBackgroundResource(R.drawable.ticketdettailorange);
             }
         }
 

@@ -19,7 +19,7 @@
         android:top="1dp">
         <rotate android:fromDegrees="180">
             <shape >
-                <solid android:color="@color/naranjaTid" />
+                <solid android:color="@color/gray" />
                 <corners android:topLeftRadius="5dp" android:bottomLeftRadius="5dp" />
             </shape>
         </rotate>

@@ -16,7 +16,7 @@
         android:top="1dp"
         android:left="1dp">
         <shape >
-            <solid android:color="@color/naranjaTid" />
+            <solid android:color="@color/gray" />
             <corners android:topLeftRadius="5dp" android:bottomLeftRadius="5dp" />
         </shape>
     </item>

@@ -15,9 +15,14 @@
         android:src="@drawable/tingo"
         android:scaleType="centerCrop"
         android:id="@+id/img1"
-        android:layout_marginTop="170dp"
-        android:layout_centerVertical="true"
+        android:layout_alignBottom="@+id/centro"
         android:layout_centerHorizontal="true" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/centro"
+        android:orientation="horizontal"
+        android:layout_centerVertical="true"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -42,6 +47,7 @@
         android:fontFamily="serif"
         android:gravity="center_horizontal"
         android:id="@+id/conten1"
-        android:layout_below="@+id/img1" />
+        android:layout_below="@+id/centro"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

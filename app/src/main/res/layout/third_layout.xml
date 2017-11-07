@@ -10,14 +10,19 @@
     >
 
     <ImageView
-        android:layout_width="100dp"
+        android:layout_width="wrap_content"
         android:layout_height="100dp"
-        android:src="@drawable/tinckets_disponibles"
+        android:src="@drawable/tutorialtinket"
         android:scaleType="centerCrop"
         android:id="@+id/img3"
-        android:layout_marginTop="170dp"
-        android:layout_centerVertical="true"
+        android:layout_alignBottom="@+id/centro"
         android:layout_centerHorizontal="true" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/centro"
+        android:orientation="horizontal"
+        android:layout_centerVertical="true"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,7 +46,9 @@
         android:textStyle="italic"
         android:fontFamily="serif"
         android:gravity="center_horizontal"
-        android:id="@+id/conten1"
-        android:layout_below="@+id/img3" />
+        android:id="@+id/conten3"
+        android:layout_below="@+id/centro"
+        android:layout_centerHorizontal="true" />
+
 
 </RelativeLayout>

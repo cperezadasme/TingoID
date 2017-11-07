@@ -38,10 +38,11 @@
         android:layout_height="wrap_content"
         android:text="siguiente"
         android:textSize="16sp"
-        android:background="@null"
+        android:background="@color/transparent"
         android:layout_below="@+id/view"
         android:layout_alignParentEnd="true"
-        android:textColor="@color/naranjaTid"
+        android:textColor="@color/celesteTid"
+        android:layout_marginRight="10dp"
         android:id="@+id/next"/>
 
     <Button
@@ -49,10 +50,11 @@
         android:layout_height="wrap_content"
         android:text="omitir"
         android:textSize="16sp"
-        android:background="@null"
+        android:background="@color/transparent"
         android:textColor="@color/naranjaTid"
         android:layout_below="@+id/view"
         android:layout_alignParentStart="true"
+        android:layout_marginLeft="10dp"
         android:id="@+id/skip"/>
 
 </RelativeLayout>

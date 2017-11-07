@@ -78,7 +78,7 @@
         <activity android:name=".GenerarCodigoActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
-            android:parentActivityName=".DetalleActivity"></activity>
+            android:parentActivityName=".MainActivity"></activity>
     </application>
 
 </manifest>

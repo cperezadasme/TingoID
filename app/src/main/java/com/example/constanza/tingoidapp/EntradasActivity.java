@@ -1,6 +1,7 @@
 package com.example.constanza.tingoidapp;
 
 import android.content.Intent;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -98,8 +99,10 @@ public class EntradasActivity extends AppCompatActivity {
                         }
 
                         else {
-                            TextView disponibles = (TextView) findViewById(R.id.entradas_disponibles);
-                            disponibles.setText("No tienes entradas disponibles");
+                            //TextView disponibles = (TextView) findViewById(R.id.entradas_disponibles);
+                            //disponibles.setText("No tienes entradas disponibles");
+                            Fragment noDisponibles = new NoDisponibles();
+                            getSupportFragmentManager().beginTransaction().replace(R.id.entradas_disponibles, noDisponibles).commit();
 
                         }
                     }
