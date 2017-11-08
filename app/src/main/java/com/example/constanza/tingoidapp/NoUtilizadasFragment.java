@@ -70,19 +70,18 @@ public class NoUtilizadasFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_no_utilizadas, container, false);
+        rootView = inflater.inflate(R.layout.fragment_no_utilizadas, container, false);
+        return rootView;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        text =(TextView)rootView.findViewById(R.id.no_utilizadas_text);
+        text =(TextView) rootView.findViewById(R.id.no_utilizadas_text);
         String font_path = "fonts/ThrowMyHandsUpintheAirBold.ttf";
         Typeface TF = Typeface.createFromAsset(getContext().getAssets(),font_path) ;
         text.setTypeface(TF);
-
-
     }
 
 

@@ -38,7 +38,7 @@ public class DetalleActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Intent intent = getIntent();
-        String id_tinket = intent.getStringExtra("id_tinket");
+        final String id_tinket = intent.getStringExtra("id_tinket");
 
         //conexion al servicio REST
         mRestAdapter = new Retrofit.Builder()
@@ -60,7 +60,7 @@ public class DetalleActivity extends AppCompatActivity {
                         JSONObject response_json = new JSONObject(json);
                         String detalle = response_json.getString("detalle");
                         if (detalle.equals("true")){
-                            //String id = response_json.getString("id");
+                            String id = response_json.getString("id");
                             String fecha_emision = response_json.getString("fecha_emision");
                             String fecha_utilizacion = response_json.getString("fecha_utilizacion");
                             String fecha_expiracion = response_json.getString("fecha_expiracion");
@@ -77,6 +77,7 @@ public class DetalleActivity extends AppCompatActivity {
                             TextView textView_tipo = (TextView) findViewById(R.id.detalle_tipo);
                             TextView textView_valor = (TextView) findViewById(R.id.detalle_valor);
                             TextView textView_valido = (TextView) findViewById(R.id.detalle_valido);
+                            TextView textView_id = (TextView) findViewById(R.id.textView_idTinket);
 
                             //textView_emision.setText(fecha_emision);
                             textView_empresa.setText(empresa);
@@ -84,6 +85,7 @@ public class DetalleActivity extends AppCompatActivity {
                             textView_tipo.setText(tipo);
                             textView_valor.setText(valor);
                             textView_valido.setText(valido);
+                            textView_id.setText(id);
 
 
                             /*

@@ -107,8 +107,6 @@ public class NoDisponibles extends Fragment {
         String font_path = "fonts/ThrowMyHandsUpintheAirBold.ttf";
         Typeface TF = Typeface.createFromAsset(getContext().getAssets(),font_path) ;
         text.setTypeface(TF);
-
-
     }
 
 

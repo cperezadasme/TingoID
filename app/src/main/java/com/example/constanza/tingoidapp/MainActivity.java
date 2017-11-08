@@ -49,7 +49,8 @@ import static java.security.AccessController.getContext;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, EntradasFragment.OnFragmentInteractionListener,
                 UtilizadasFragment.OnFragmentInteractionListener, TingoQRFragment.OnFragmentInteractionListener,
-                PromocionesFragment.OnFragmentInteractionListener, HomeFragment.OnFragmentInteractionListener{
+                PromocionesFragment.OnFragmentInteractionListener, HomeFragment.OnFragmentInteractionListener,
+                NoDisponibles.OnFragmentInteractionListener, NoUtilizadasFragment.OnFragmentInteractionListener{
 
     public static ArrayList<Tinket> lista_tinkets;
     public static ArrayList<Tinket> lista_utilizados;
@@ -102,10 +103,10 @@ public class MainActivity extends AppCompatActivity
         //user_name.setText(usuario);
         if (usuario!=null){
             user_email.setText(usuario);
+
         }
         else {
             usuario = SessionPrefs.get(this).getPrefsEmail();
-
             id_usuario = SessionPrefs.get(this).getPrefsId();
             user_email.setText(usuario);
         }
@@ -203,7 +204,6 @@ public class MainActivity extends AppCompatActivity
                             Tinket tinket = new Tinket(id, fecha_emision, fecha_utilizacion, fecha_expiracion, valido, empresa, detalle);
 
                             lista_utilizados.add(tinket);
-                            System.out.print(tinket);
                         }
                     }
                 } catch (IOException | JSONException e) {
@@ -399,7 +399,14 @@ public class MainActivity extends AppCompatActivity
                 }
             });
 
-            fragment = new EntradasFragment();
+            if (lista_tinkets.size() >0){
+                fragment = new EntradasFragment();
+                fragmento_seleccionado = true;
+            }
+            else if (lista_tinkets.size() == 0){
+                fragment = new NoDisponibles();
+                fragmento_seleccionado = true;
+            }
             fragmento_seleccionado = true;
 
         } else if (id == R.id.nav_tinkets_utilizados) {
@@ -435,7 +442,6 @@ public class MainActivity extends AppCompatActivity
                                 Tinket tinket = new Tinket(id, fecha_emision, fecha_utilizacion, fecha_expiracion, valido, empresa, detalle);
 
                                 lista_utilizados.add(tinket);
-                                System.out.print(tinket);
                             }
                         }
                     } catch (IOException | JSONException e) {
@@ -449,8 +455,15 @@ public class MainActivity extends AppCompatActivity
                 }
             });
 
-            fragment = new UtilizadasFragment();
-            fragmento_seleccionado = true;
+            if (lista_utilizados.size() > 0){
+                fragment = new UtilizadasFragment();
+                fragmento_seleccionado = true;
+            }
+
+            else if (lista_utilizados.size() == 0){
+                fragment = new NoUtilizadasFragment();
+                fragmento_seleccionado = true;
+            }
         } else if (id == R.id.nav_promociones) {
             if (timer != null){
                 timer.cancel();
@@ -617,11 +630,10 @@ public class MainActivity extends AppCompatActivity
                                 if (almacenar.equals("true")){
                                     Toast.makeText(getApplicationContext(), (String) response_json.get("mensaje"), Toast.LENGTH_LONG).show();
                                     id_tinket = response_json.getString("id_tinket");
-                                    System.out.println("antes del intent");
                                     Intent intent = new Intent(getApplicationContext(), DetalleActivity.class);
                                     intent.putExtra("id_tinket", id_tinket);
                                     startActivity(intent);
-                                    System.out.println("despues del intent");
+
                                 }
                                 else {
                                     Toast.makeText(getApplicationContext(), (String) response_json.get("mensaje"), Toast.LENGTH_LONG).show();

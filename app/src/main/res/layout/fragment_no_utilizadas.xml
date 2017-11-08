@@ -13,14 +13,6 @@
 
     tools:context="com.example.constanza.tingoidapp.NoDisponibles">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/my_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/oscuroTid"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
-
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -34,21 +26,21 @@
             android:textSize="40dp"
             android:textAlignment="center"
             android:paddingTop="20dp"
+            android:paddingBottom="20dp"
             android:layout_centerVertical="true"
             android:text="No posees entradas utilizadas"
             android:textColor="@color/black"
-            android:background= "@drawable/fondo"/>
+            android:background= "@color/background_light"/>
 
 
     </RelativeLayout>
+
     <ImageView
-        android:layout_marginTop="100dp"
+        android:id="@+id/imageView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:src="@drawable/sad"
-        />
-
-
+        android:layout_marginTop="100dp"
+        android:src="@drawable/sad" />
 
 </FrameLayout>

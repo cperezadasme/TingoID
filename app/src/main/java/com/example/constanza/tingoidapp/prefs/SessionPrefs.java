@@ -45,6 +45,7 @@ public class SessionPrefs {
             //editor.putString(PREFS_NAME,user.getName());
             //editor.putString(PREFS_TOKEN,user.getToken());
             editor.putString(PREFS_EMAIL,user.getEmail());
+            editor.putString(PREFS_ID,user.getId());
             //editor.apply();
             editor.commit();
 
@@ -57,6 +58,7 @@ public class SessionPrefs {
         SharedPreferences.Editor editor = mPrefs.edit();
         //editor.putString(PREFS_NAME,null);
         editor.putString(PREFS_EMAIL,null);
+        editor.putString(PREFS_ID,null);
         //editor.putString(PREFS_TOKEN,null);
         editor.apply();
 
